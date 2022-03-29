@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/03/28 15:50:05 by amorcill         ###   ########.fr        #
+#    Updated: 2022/03/29 18:23:43 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
-SRCS	=	phonebook.cpp
+SRCS	=	main.cpp Contact.class.cpp Phonebook.class.cpp
 
 all:		$(NAME)
 # Linking
