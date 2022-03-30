@@ -16,7 +16,7 @@ Contact::Contact(std::string first_name, std::string last_name, std::string phon
     this -> _phone = phone;
 }
 
-std::string Contact::getFirsName(void) {
+std::string Contact::getFirstName(void) {
     return (this -> _first_name);
 }
 std::string Contact::getLastName(void) {
@@ -31,6 +31,6 @@ void Contact::setFirstName(std::string first_name) {
 void Contact::setLastName(std::string last_name) {
     this -> _last_name = last_name;
 }
-void Contact::setPhone(std::string phone) {
+void Contact::setPhone(int phone) {
     this -> _phone = phone;
 }

@@ -3,12 +3,20 @@
 #ifndef PHONEBOOK_CLASS_H
 #define PHONEBOOK_CLASS_H
 
-class Phonebook{
+class PhoneBook{
 private:
-	Contact _contacts[10];
+	int ncontacts;
+	Contact contacts[8];
+
 public:
-	void add(Contact contact);
-	void search(Contact contact);
+	PhoneBook(void);
+	~PhoneBook(void);
+
+	void add();
+	//void search(Contact contact);
+	void setNContacts(int n);
+	void increaseNContacts(void);
+	int getNContacts(void);
 };
 
 #endif
