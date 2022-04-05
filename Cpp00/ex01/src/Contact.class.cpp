@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Contact.class.hpp"
+#include "../inc/Contact.class.hpp"
 
 Contact::Contact() {
     std::cout << "Contact Default constructor from Contact has been called." << std::endl;
@@ -10,10 +10,11 @@ Contact::~Contact(void) {
     std::cout << "Contact Default de-constructor from Contact has been called." << std::endl;
     return;
 }
-Contact::Contact(std::string first_name, std::string last_name, std::string phone) {
+Contact::Contact(std::string first_name, std::string last_name, std::string nick, std::string phone) {
     this -> _first_name = first_name;
     this -> _last_name = last_name;
     this -> _phone = phone;
+	this -> _nick = nick;
 }
 
 std::string Contact::getFirstName(void) {
@@ -31,6 +32,9 @@ void Contact::setFirstName(std::string first_name) {
 void Contact::setLastName(std::string last_name) {
     this -> _last_name = last_name;
 }
-void Contact::setPhone(int phone) {
+void Contact::setPhone(std::string phone) {
     this -> _phone = phone;
+}
+
+void Contact::printContact(){
 }

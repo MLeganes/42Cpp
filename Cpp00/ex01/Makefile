@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/03/29 18:23:43 by amorcill         ###   ########.fr        #
+#    Updated: 2022/04/05 19:05:21 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,16 @@ NAME	=	phonebook
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
-SRCS	=	main.cpp Contact.class.cpp Phonebook.class.cpp
+S		=	src/
+O		=	obj/
+
+OBJS	= 	$(patsubst $S%.c, $O%.o, $(SRCS))
+SRCS	=	$Smain.cpp \
+			$Snumber.cpp \
+			$SContact.class.cpp \
+			$SPhonebook.class.cpp \
+
+INC		=	-I ./inc
 
 all:		$(NAME)
 # Linking
@@ -25,10 +33,10 @@ $(NAME):	$(OBJS)
 			@echo "\033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
 # Compiling
-%.o:		%.c
-		
+$O%.o:		$S%.c
+			@[ -d $(O) ]	|| mkdir -p $(O)
 			@echo "\033[1;32m$(NAME)\033[1;0m\033[32m compiling...\033[0m"
-			@$(CC) $(FLAGS) -c $< -o $@
+			@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
 			@rm -rf $(O)

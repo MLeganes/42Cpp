@@ -1,4 +1,5 @@
 #include "Contact.class.hpp"
+#include <iostream>
 
 #ifndef PHONEBOOK_CLASS_H
 #define PHONEBOOK_CLASS_H
@@ -12,8 +13,8 @@ public:
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void add();
-	//void search(Contact contact);
+	void add(void);
+	void search(void);
 	void setNContacts(int n);
 	void increaseNContacts(void);
 	int getNContacts(void);
