@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:40:46 by amorcill          #+#    #+#             */
-/*   Updated: 2022/03/30 14:55:44 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:06:04 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,12 @@ int main()
 		std::cout << " (E) Exit phonebook" << std::endl;
 		std::cout << "Select one option:" << std::endl;
 		std::cout << "_> ";
-		std::cin >> opt;
-		//std::getline
+		//std::cin >> opt;
+		std::getline(std::cin, opt);
 
 		//switch for the options
 		if( opt == "a" || opt == "A" || opt == "add" || opt == "Add"){
 			agenda.add();
-	
-			
-			
-
 			
 		}
 		else if ( opt == "s" || opt == "S" || opt == "search" || opt == "Search"){
@@ -48,6 +44,9 @@ int main()
 		}
 		else if (opt == "e" || opt == "E" || opt == "exit" || opt == "Exit"){
 			exit = 0;
+		}
+		else{
+			std::cout << "\nError: Phone book no option finded\n" << std::endl;
 		}
 	}	
 	return 0;

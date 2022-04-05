@@ -3,11 +3,11 @@
 #include "Contact.class.hpp"
 
 Contact::Contact() {
-    std::cout << "Default constructor from Contact has been called." << std::endl;
+    std::cout << "Contact Default constructor from Contact has been called." << std::endl;
     return;
 }
 Contact::~Contact(void) {
-    std::cout << "Default de-constructor from Contact has been called." << std::endl;
+    std::cout << "Contact Default de-constructor from Contact has been called." << std::endl;
     return;
 }
 Contact::Contact(std::string first_name, std::string last_name, std::string phone) {
