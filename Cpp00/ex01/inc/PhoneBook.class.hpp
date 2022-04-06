@@ -1,23 +1,25 @@
 #include "Contact.class.hpp"
-#include <iostream>
+#include <iomanip>
 
 #ifndef PHONEBOOK_CLASS_H
 #define PHONEBOOK_CLASS_H
 
-class PhoneBook{
+class PhoneBook {
 private:
-	int ncontacts;
-	Contact contacts[8];
+  int _ncontacts;
+  Contact _contacts[8];
 
 public:
-	PhoneBook(void);
-	~PhoneBook(void);
+  PhoneBook(void);
+  ~PhoneBook(void);
 
-	void add(void);
-	void search(void);
-	void setNContacts(int n);
-	void increaseNContacts(void);
-	int getNContacts(void);
+  void add(void);
+  void search(void);
+  void setNContacts(int n);
+  void increaseNContacts(void);
+  int getNContacts(void);
+  void printPreview(void);
+  void printContact(int idx);
 };
 
 #endif
