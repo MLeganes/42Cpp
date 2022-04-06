@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:40:46 by amorcill          #+#    #+#             */
-/*   Updated: 2022/04/05 18:49:45 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/04/06 09:26:58 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int main()
 	int exit;
 	PhoneBook agenda;
 
-	std::cout << "### Phone Book ###" << std::endl;
 	exit = 1;
 	while (exit)
 	{
 		//print menu
-		std::cout << "Phone book options:" << std::endl;
+		std::cout << "### Phone Book ###" << std::endl;
 		std::cout << " (A) Add new contact" << std::endl;
 		std::cout << " (S) Search contact" << std::endl;
 		std::cout << " (E) Exit phonebook" << std::endl;

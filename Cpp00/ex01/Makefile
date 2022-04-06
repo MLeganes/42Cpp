@@ -6,13 +6,13 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/04/05 19:05:21 by amorcill         ###   ########.fr        #
+#    Updated: 2022/04/05 19:51:10 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	phonebook
 CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98
+FLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
 
 S		=	src/
 O		=	obj/
@@ -21,9 +21,7 @@ OBJS	= 	$(patsubst $S%.c, $O%.o, $(SRCS))
 SRCS	=	$Smain.cpp \
 			$Snumber.cpp \
 			$SContact.class.cpp \
-			$SPhonebook.class.cpp \
-
-INC		=	-I ./inc
+			$SPhoneBook.class.cpp \
 
 all:		$(NAME)
 # Linking
@@ -36,7 +34,7 @@ $(NAME):	$(OBJS)
 $O%.o:		$S%.c
 			@[ -d $(O) ]	|| mkdir -p $(O)
 			@echo "\033[1;32m$(NAME)\033[1;0m\033[32m compiling...\033[0m"
-			@$(CC) $(FLAGS) $(INC) -c $< -o $@
+			@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 			@rm -rf $(O)

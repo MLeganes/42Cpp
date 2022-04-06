@@ -25,6 +25,7 @@ void PhoneBook::add(){
 	std::string opt;
 	int 		index;
 	bool		isnb;
+	int 		i;
 
 	index = this->getNContacts();
 	do
@@ -46,14 +47,27 @@ void PhoneBook::add(){
 	opt.clear();
 	do
 	{
-		isnb = true;
+		isnb = false;
 		std::cout << "Contact phone:" << std::endl;
 		std::cout << "_> ";
+		std::getline(std::cin, opt);
+		i = 0;
+		while ( i < (int)opt.length()){
+			if (isdigit(opt[i]) == false){
+				isnb = false;
+				break;
+			}
+			i++;
+		}
+
+
 		if (isnumber(opt) == false){
 			std::cout << "Only numbers in phone" << std::endl;
 			std::cout << "_> ";
 			isnb = false;
 		}else{
+			isnb = true;
+			std::cout << "Good numbers phone!!!!" << std::endl;
 			std::getline(std::cin, opt);
 			this->contacts[index].setPhone(opt);
 		}
