@@ -2,7 +2,9 @@
 
 #include "../inc/Contact.class.hpp"
 
-Contact::Contact() { return; }
+Contact::Contact() { 
+	std::cout << "\n Contact created " << std::endl;
+	return; }
 Contact::~Contact(void) { return; }
 Contact::Contact(std::string first_name, std::string last_name,
                  std::string nick, std::string phone) {

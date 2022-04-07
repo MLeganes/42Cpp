@@ -17,7 +17,7 @@ public:
   void setNContacts(int n);
   void increaseNContacts(void);
   int getNContacts(void);
-  void printPreview(void);
+  int printPreview(void);
   void printContact(int idx);
 };
 

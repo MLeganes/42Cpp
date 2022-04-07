@@ -15,10 +15,14 @@ PhoneBook::PhoneBook(void)
 PhoneBook::~PhoneBook(void) { return; }
 
 int PhoneBook::getNContacts(void) { return this->_ncontacts; }
+
 void PhoneBook::increaseNContacts()
 {
-	if (this->_ncontacts < 7)
-		this->_ncontacts++;
+	this->_ncontacts++;
+	if (this->_ncontacts >= 7)
+		this->_ncontacts = 7;
+	
+	std::cout << "\nIncreased contact-number " << this->_ncontacts << std::endl;
 }
 
 void PhoneBook::add()
@@ -28,41 +32,52 @@ void PhoneBook::add()
 	bool isnb;
 
 	index = this->getNContacts();
+	std::cout << "\nContact #" << index + 1 << "(array index " << index << ")";
 	do
 	{
 		std::cout << "\nContact first name: ";
-		// std::cout << "_> ";
 		std::getline(std::cin, opt);
+		if (std::cin.eof() == true){
+			std::cout << "\nExiting ..." << std::endl;
+			std::exit(0);
+		}
 		this->_contacts[index].setFirstName(opt);
 	} while (opt.empty());
 	opt.clear();
 	do
 	{
 		std::cout << "Contact last name: ";
-		// std::cout << "_> ";
 		std::getline(std::cin, opt);
+		if (std::cin.eof() == true){
+			std::cout << "\nExiting ..." << std::endl;
+			std::exit(0);
+		}
 		this->_contacts[index].setLastName(opt);
 	} while (opt.empty());
 	opt.clear();
 	do
 	{
 		std::cout << "Contact nick name: ";
-		// std::cout << "_> ";
 		std::getline(std::cin, opt);
+		if (std::cin.eof() == true){
+			std::cout << "\nExiting ..." << std::endl;
+			std::exit(0);
+		}
 		this->_contacts[index].setNick(opt);
 	} while (opt.empty());
 	opt.clear();
-
 	do
 	{
 		isnb = false;
 		std::cout << "Contact phone: ";
-		// std::cout << "_> ";
 		std::getline(std::cin, opt);
-
+		if (std::cin.eof() == true){
+			std::cout << "\nExiting ..." << std::endl;
+			std::exit(0);
+		}
 		if (isnumber(opt) == false)
 		{
-			std::cout << "Only numbers in phone-number, try it again." << std::endl;
+			std::cout << "Only numbers in phone-number, try it again!" << std::endl;
 			isnb = false;
 		}
 		else
@@ -84,45 +99,57 @@ void PhoneBook::add()
 			  << std::endl;
 	std::cout << "\n"
 			  << std::endl;
-
 	this->increaseNContacts();
 }
 
 void PhoneBook::search()
 {
 	std::string opt;
-	bool exitWhile;
+	bool exit;
 	int idx;
 
-	this->printPreview();
+	if (this->printPreview() == 1)
+		return ;
 	do
 	{
-		std::cout << "\nInsert index to display full contact:" << std::endl;
-		std::cout << "_> ";
+		std::cout << "\nInsert index to display full contact: ";
 		std::getline(std::cin, opt);
+		if (std::cin.eof() == true){
+			std::cout << "\nExiting ..." << std::endl;
+			std::exit(0);
+		}
 		if (opt.empty() || isnumber(opt) == false)
 		{
-			std::cout << "\nError: Wrong index" << std::endl;
-			exitWhile = false;
+			std::cout << "\nError: Wrong index." << std::endl;
+			exit = false;
 		}
 		else
 		{
-			exitWhile = true;
-			idx = std::stoi(opt);
-			this->printContact(idx - 1);
+			idx = std::atoi(opt.c_str());
+			if ( idx < 1 || idx > 8){
+				exit = false;
+				std::cout << "\nError: Index should be between 1 to 8." << std::endl;
+			}
+			else if (idx <= this->getNContacts()){
+				this->printContact(idx - 1);
+				exit = true;
+			}
+			else{
+				std::cout << "\nThis contact is empty in PhoneBook." << std::endl; exit = true;
+			}
 		}
-
-	} while (exitWhile == false);
-
+		opt.clear();
+	} while (exit == false);
 	return;
 }
 
-void PhoneBook::printPreview(void)
+int PhoneBook::printPreview(void)
 {
 	if (this->_ncontacts == 0)
 	{
 		std::cout << "\nPhoneBook is empty!\n"
 				  << std::endl;
+		return 1;
 	}
 	else
 	{
@@ -147,6 +174,7 @@ void PhoneBook::printPreview(void)
 			else
 				std::cout << std::setw(10) << this->_contacts[i].getNick() << std::endl;
 		}
+		return 0;
 	}
 }
 
