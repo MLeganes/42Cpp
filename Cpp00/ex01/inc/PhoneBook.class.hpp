@@ -6,6 +6,8 @@
 class PhoneBook {
 private:
   int _ncontacts;
+  int _index;
+  bool _full;
   Contact _contacts[8];
 
 public:

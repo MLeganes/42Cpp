@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/04/07 20:41:19 by amorcill         ###   ########.fr        #
+#    Updated: 2022/04/08 16:43:32 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ FLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
 
 S		=	src/
 O		=	obj/
+I		=	inc/
 
-OBJS	= 	$(patsubst $S%.c, $O%.o, $(SRCS))
+OBJS	= 	$(patsubst $S%.cpp, $O%.o, $(SRCS))
 SRCS	=	$Smain.cpp \
 			$Snumber.cpp \
 			$SContact.class.cpp \
@@ -31,10 +32,10 @@ $(NAME):	$(OBJS)
 			@echo "\033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
 # Compiling
-$O%.o:		$S%.c
+$O%.o:		$S%.cpp
 			@[ -d $(O) ]	|| mkdir -p $(O)
 			@echo "\033[1;32m$(NAME)\033[1;0m\033[32m compiling...\033[0m"
-			@$(CC) $(FLAGS) -c $< -o $@
+			@$(CC) $(FLAGS) -I $(I) -c $< -o $@
 
 clean:
 			@rm -rf $(O)
