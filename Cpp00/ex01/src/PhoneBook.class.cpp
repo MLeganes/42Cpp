@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/08 16:49:39 by amorcill          #+#    #+#             */
+/*   Updated: 2022/04/08 17:05:02 by amorcill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "PhoneBook.class.hpp"
+#include "Contact.class.hpp"
+#include "number.hpp"
 #include <iomanip>
 #include <iostream>
 #include <string>
-
-#include "../inc/Contact.class.hpp"
-#include "../inc/PhoneBook.class.hpp"
-#include "../inc/number.hpp"
 
 PhoneBook::PhoneBook(void) {
   this->_ncontacts = 0;
@@ -15,16 +26,17 @@ PhoneBook::PhoneBook(void) {
 
 PhoneBook::~PhoneBook(void) { return; }
 
-int PhoneBook::getNContacts(void) { return this->_ncontacts; }
+// int PhoneBook::getNContacts(void) { return this->_ncontacts; }
 
-void PhoneBook::increaseNContacts() {
-  this->_ncontacts++;
-  if (this->_ncontacts == 7) {
-  }
-  this->_ncontacts = 7;
+// void PhoneBook::increaseNContacts() {
+//   this->_ncontacts++;
+//   if (this->_ncontacts == 7) {
+//   }
+//   this->_ncontacts = 7;
 
-  std::cout << "\nIncreased contact-number " << this->_ncontacts << std::endl;
-}
+//   std::cout << "\nIncreased contact-number " << this->_ncontacts <<
+//   std::endl;
+// }
 
 void PhoneBook::add() {
   std::string opt;
@@ -60,6 +72,7 @@ void PhoneBook::add() {
     this->_contacts[this->_index].setNick(opt);
   } while (opt.empty());
   opt.clear();
+
   do {
     isnb = false;
     std::cout << "Contact phone: ";
@@ -69,7 +82,11 @@ void PhoneBook::add() {
       std::exit(0);
     }
     if (isnumber(opt) == false) {
-      std::cout << "Only numbers in phone-number, try it again!" << std::endl;
+      std::cout << "\nError: Only numbers in phone-number, try it again!" << std::endl;
+      isnb = false;
+      opt.clear();
+    } else if (opt.empty()) {
+      opt.clear();
       isnb = false;
     } else {
       isnb = true;

@@ -6,14 +6,14 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:40:46 by amorcill          #+#    #+#             */
-/*   Updated: 2022/04/08 16:10:18 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:47:58 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Contact.class.hpp"
-#include "../inc/PhoneBook.class.hpp"
+#include "Contact.class.hpp"
+#include "PhoneBook.class.hpp"
 
-//https://en.cppreference.com/w/cpp/symbol_index
+// https://en.cppreference.com/w/cpp/symbol_index
 
 int main() {
   PhoneBook agenda;
@@ -27,12 +27,12 @@ int main() {
     std::cout << " (S) Search contact" << std::endl;
     std::cout << " (E) Exit phonebook\n" << std::endl;
     std::cout << "Select one option: ";
-	std::getline(std::cin, opt);
-	// To capture ^D signal.
-	if (std::cin.eof() == true){
-		std::cout << "\nExiting ..." << std::endl;
-		std::exit(0);
-	}
+    std::getline(std::cin, opt);
+    // To capture ^D signal.
+    if (std::cin.eof() == true) {
+      std::cout << "\nExiting ..." << std::endl;
+      std::exit(0);
+    }
     if (opt == "a" || opt == "A" || opt == "add" || opt == "Add")
       agenda.add();
     else if (opt == "s" || opt == "S" || opt == "search" || opt == "Search")

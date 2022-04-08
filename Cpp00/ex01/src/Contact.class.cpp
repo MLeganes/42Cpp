@@ -1,10 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.class.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/08 16:48:46 by amorcill          #+#    #+#             */
+/*   Updated: 2022/04/08 16:51:44 by amorcill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Contact.class.hpp"
 #include <iostream>
 
-#include "../inc/Contact.class.hpp"
-
-Contact::Contact() { 
-	std::cout << "\n Contact created " << std::endl;
-	return; }
+Contact::Contact() { return; }
 Contact::~Contact(void) { return; }
 Contact::Contact(std::string first_name, std::string last_name,
                  std::string nick, std::string phone) {
