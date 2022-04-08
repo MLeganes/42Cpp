@@ -6,13 +6,13 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/04/08 16:43:32 by amorcill         ###   ########.fr        #
+#    Updated: 2022/04/08 17:13:14 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	phonebook
 CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
+FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 S		=	src/
 O		=	obj/
