@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
-#include "Contact.class.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 #include "number.hpp"
 #include <iomanip>
 #include <iostream>
@@ -82,7 +82,8 @@ void PhoneBook::add() {
       std::exit(0);
     }
     if (isnumber(opt) == false) {
-      std::cout << "\nError: Only numbers in phone-number, try it again!" << std::endl;
+      std::cout << "\nError: Only numbers in phone-number, try it again!"
+                << std::endl;
       isnb = false;
       opt.clear();
     } else if (opt.empty()) {
@@ -95,16 +96,29 @@ void PhoneBook::add() {
     opt.clear();
   } while (isnb == false);
 
+  do {
+    std::cout << "Contact darkest secret: ";
+    std::getline(std::cin, opt);
+    if (std::cin.eof() == true) {
+      std::cout << "\nExiting ..." << std::endl;
+      std::exit(0);
+    }
+    this->_contacts[this->_index].setSecret(opt);
+  } while (opt.empty());
+  opt.clear();
+
   if (this->_full == false)
-    this->_ncontacts++; // nb of contacts
-  if (this->_ncontacts == 8) {
+    this->_ncontacts++;
+  if (this->_ncontacts == 8)
     this->_full = true;
-    this->_index = 7;
+    
+  if (this->_index == 7) {
+    this->_index = 0;
   } else {
     this->_index++; // index ready to add next contact.
   }
+
   std::cout << "\nPhonebook: new contact added" << std::endl;
-  opt.clear();
 }
 
 void PhoneBook::search() {
@@ -181,4 +195,7 @@ void PhoneBook::printContact(int idx) {
             << "Nickname: " << this->_contacts[idx].getNick() << std::endl;
   std::cout << std::left << std::setw(14)
             << "Phone number: " << this->_contacts[idx].getPhone() << std::endl;
+  std::cout << std::left << std::setw(14)
+            << "Darkest secret: " << this->_contacts[idx].getSecret()
+            << std::endl;
 }

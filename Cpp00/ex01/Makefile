@@ -21,8 +21,8 @@ I		=	inc/
 OBJS	= 	$(patsubst $S%.cpp, $O%.o, $(SRCS))
 SRCS	=	$Smain.cpp \
 			$Snumber.cpp \
-			$SContact.class.cpp \
-			$SPhoneBook.class.cpp \
+			$SContact.cpp \
+			$SPhoneBook.cpp \
 
 all:		$(NAME)
 # Linking

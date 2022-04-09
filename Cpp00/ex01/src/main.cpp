@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 // https://en.cppreference.com/w/cpp/symbol_index
 
@@ -23,9 +23,9 @@ int main() {
   exit = 1;
   while (exit) {
     std::cout << "\n### Phone Book ###" << std::endl;
-    std::cout << " (A) Add new contact" << std::endl;
-    std::cout << " (S) Search contact" << std::endl;
-    std::cout << " (E) Exit phonebook\n" << std::endl;
+    std::cout << " (ADD) Add new contact" << std::endl;
+    std::cout << " (SEARCH) Search contact" << std::endl;
+    std::cout << " (EXIT) Exit phonebook\n" << std::endl;
     std::cout << "Select one option: ";
     std::getline(std::cin, opt);
     // To capture ^D signal.
@@ -33,11 +33,11 @@ int main() {
       std::cout << "\nExiting ..." << std::endl;
       std::exit(0);
     }
-    if (opt == "a" || opt == "A" || opt == "add" || opt == "Add")
+    if (opt == "ADD")
       agenda.add();
-    else if (opt == "s" || opt == "S" || opt == "search" || opt == "Search")
+    else if (opt == "SEARCH")
       agenda.search();
-    else if (opt == "e" || opt == "E" || opt == "exit" || opt == "Exit")
+    else if (opt == "EXIT")
       exit = 0;
     else
       std::cout << "\nError: Phone book no option finded\n" << std::endl;

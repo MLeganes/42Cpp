@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
-#ifndef PHONEBOOK_CLASS_H
-#define PHONEBOOK_CLASS_H
+#include "Contact.hpp"
+#ifndef PHONEBOOK_H
+#define PHONEBOOK_H
 
 class PhoneBook {
 private:
