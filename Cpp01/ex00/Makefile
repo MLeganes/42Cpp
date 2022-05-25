@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/04/20 11:34:14 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/25 16:58:13 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
-SRCS	=	main.cpp Zombie.cpp
+SRCS	=	main.cpp \
+			newZombie.cpp \
+			randomChump.cpp \
+			Zombie.cpp \
 
 all:		$(NAME)
 # Linking

@@ -6,23 +6,25 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:57:16 by amorcill          #+#    #+#             */
-/*   Updated: 2022/04/20 12:42:55 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/25 17:05:03 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie* newZombie( std::string name ){
-	return (new Zombie(name));
-}
-
-void randomChump( std::string name ){
-	Zombie zom = new Zombie(name);
-	zom.announce();
-}
-
 int main(void){
-	return 0;
+	
+	// 1. Example: create a Zombie with the class
+	std::cout << "\n1. Example" << std::endl;
+	Zombie *zmb1;
+	zmb1 = newZombie("Zombie1");
+	zmb1->announce();
+	delete zmb1;	
 
+	// 2. Example 
+	std::cout << "\n2. Example" << std::endl;
+	randomChump("Zombie2");
+	
+	return (EXIT_SUCCESS);
 }
