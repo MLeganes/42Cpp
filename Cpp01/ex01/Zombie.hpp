@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:21 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/25 21:51:49 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:15:16 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ private:
   std::string name;
 
 public:
+  //member function is a function that is defined as part of a class.
+  //Member functions are sometimes referred to as methods
+  				Zombie();
   				Zombie(std::string name);
   				~Zombie();
   void			announce();
   void			setName(std::string name);
-  std::string	getName(void);
 };
 
 Zombie* zombieHorde( int N, std::string name);

@@ -6,28 +6,27 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:57:16 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/27 15:31:15 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:08:31 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
 #include <iostream>
 #include <stdlib.h>
 
 
 int main(void){
 
-	// 1. Example: create an array of Zombies
-	std::cout << "\n1. Example: creating..." << std::endl;
+	std::string str = "HI THIS IS BRAIN";
+	std::string *stringPTR = &str;
+	std::string &stringREF = str;
 
-	Zombie *zmbs;
-	zmbs = zombieHorde(10, "Zombie");
-	for (int i = 0; i < 10; i++)
-	{
-		zmbs->announce();
-	}
-	std::cout << "\n1. Example: deleting..." << std::endl;
-	// Delete the array of zombies.
-	delete[] zmbs;
+	std::cout << "The memory address of the string variable "	<< &str << std::endl;
+	std::cout << "The memory address held by stringPTR "	<< stringPTR << std::endl;
+	std::cout << "The memory address held by stringREF "	<< &stringREF << std::endl;
+	
+	std::cout << "The value of the string variable " 		<< str << std::endl;
+	std::cout << "The value pointed to by stringPTR "		<< *stringPTR << std::endl;
+	std::cout << "The value pointed to by stringREF "		<< stringREF << std::endl;
+
 	return (0);
 }
