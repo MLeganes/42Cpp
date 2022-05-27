@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 11:57:16 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/25 21:38:42 by amorcill         ###   ########.fr       */
+/*   Created: 2022/04/20 11:20:21 by amorcill          #+#    #+#             */
+/*   Updated: 2022/05/25 21:51:49 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 #include <iostream>
-#include <stdlib.h>
 
+class Zombie {
+private:
+  std::string name;
 
-int main(void){
-	
-	// 1. Example: create a Zombie with the class
-	std::cout << "\n1. Example" << std::endl;
-	Zombie *zmb1;
-	zmb1 = newZombie("Zombie1");
-	zmb1->announce();
-	delete zmb1;	
+public:
+  				Zombie(std::string name);
+  				~Zombie();
+  void			announce();
+  void			setName(std::string name);
+  std::string	getName(void);
+};
 
-	// 2. Example 
-	std::cout << "\n2. Example" << std::endl;
-	randomChump("Zombie2");
-	
-	system("leaks Zombie");
-	return (0);
-}
+Zombie* zombieHorde( int N, std::string name);
+
+#endif

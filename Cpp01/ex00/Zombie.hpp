@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:20:21 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/25 16:58:33 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/25 21:30:39 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class Zombie {
 private:
-  std::string _name;
+  std::string name;
 
 public:
   Zombie(std::string name);
