@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/27 19:00:45 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/29 16:54:52 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
 			Weapon.cpp \
 			HumanA.cpp \
+			HumanB.cpp \
 
 all:		$(NAME)
 # Linking
