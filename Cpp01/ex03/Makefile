@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/29 16:54:52 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/30 15:48:57 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	weapon
+NAME	=	violence
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
