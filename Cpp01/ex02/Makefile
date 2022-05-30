@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/27 16:09:29 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/30 16:08:25 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,3 @@ fclean: 	clean
 			@echo "\033[1;31m $(NAME)\033[1;0m\033[31m removed.\033[0m"
 
 re: 		fclean $(NAME)
-
-test:		$(NAME)
-			./megaphone "shhhhh... I think the students are asleep..."
-			./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
-			./megaphone

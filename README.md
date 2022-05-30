@@ -8,7 +8,7 @@
 -	ex01 Allocated arrays.
 -	ex02 Pointers and references.
 -	ex03 more pointers, refs and classes.
+-	ex04 basic file input and output file streams.
 
--	ex04 basic file input and output streams.
 -	ex05 features function pointers in C++.
 -	ex06 ``switch`` blocks.

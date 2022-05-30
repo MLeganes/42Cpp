@@ -6,19 +6,16 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/30 16:08:10 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/30 16:07:59 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
+NAME	=	sedisforlosers
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
-			newZombie.cpp \
-			randomChump.cpp \
-			Zombie.cpp \
 
 all:		$(NAME)
 # Linking
