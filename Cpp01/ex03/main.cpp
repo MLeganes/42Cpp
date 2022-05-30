@@ -1,8 +1,6 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 #include "Weapon.hpp"
-#include <stdlib.h>
-#include <unistd.h>
 
 int main()
 {
