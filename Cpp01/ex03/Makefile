@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/30 16:08:34 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/31 01:05:53 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	violence
+NAME	=	unnecessaryviolence
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
@@ -42,3 +42,9 @@ fclean: 	clean
 			@echo "\033[1;31m $(NAME)\033[1;0m\033[31m removed.\033[0m"
 
 re: 		fclean $(NAME)
+
+val:
+			valgrind --leak-check=full -s ./$(NAME)
+
+leaks:
+			leaks --atExit -- ./$(NAME)
