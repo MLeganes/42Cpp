@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:57:16 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/27 15:31:15 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:21:58 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 int main(void){
 
-	// 1. Example: create an array of Zombies
 	std::cout << "\n1. Example: creating..." << std::endl;
 
 	Zombie *zmbs;
@@ -26,8 +25,7 @@ int main(void){
 	{
 		zmbs->announce();
 	}
-	std::cout << "\n1. Example: deleting..." << std::endl;
-	// Delete the array of zombies.
+	std::cout << "\n2. Example: deleting..." << std::endl;
 	delete[] zmbs;
 	return (0);
 }

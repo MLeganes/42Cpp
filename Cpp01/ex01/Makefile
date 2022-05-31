@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/30 16:08:17 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/31 15:21:05 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
+NAME	=	moarbrainz
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
