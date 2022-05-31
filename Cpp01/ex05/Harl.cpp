@@ -2,14 +2,8 @@
 #include <string>
 #include <iostream>
 
-Harl::Harl()
-{
-	std::cout << "Harl is created..." << std::endl;
-}
-Harl::~Harl()
-{
-	std::cout << "Harl is destroyed!" << std::endl;
-}
+Harl::Harl() {}
+Harl::~Harl() {}
 
 void Harl::complain(std::string level)
 {

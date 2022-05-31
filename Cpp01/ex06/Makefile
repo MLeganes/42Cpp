@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/05/31 13:13:21 by amorcill         ###   ########.fr        #
+#    Updated: 2022/05/31 14:44:25 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	harlfilter
+NAME	=	harlFilter
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
