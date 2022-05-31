@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 11:57:16 by amorcill          #+#    #+#             */
-/*   Updated: 2022/05/31 15:21:58 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:07:31 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void){
 	zmbs = zombieHorde(10, "Zombie");
 	for (int i = 0; i < 10; i++)
 	{
-		zmbs->announce();
+		zmbs[i].announce();
 	}
 	std::cout << "\n2. Example: deleting..." << std::endl;
 	delete[] zmbs;
