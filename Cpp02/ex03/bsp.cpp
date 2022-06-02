@@ -1,5 +1,16 @@
-#include "Point.hpp"
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    bsp.cpp                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/02 14:49:45 by amorcill          #+#    #+#              #
+#    Updated: 2022/06/02 14:49:49 by amorcill         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+#include "Point.hpp"
 #include <cstdio>
 
 /* A utility function to calculate area of triangle formed by a(x1, y1), b(x2, y2) and c(x3, y3) */
