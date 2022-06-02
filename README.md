@@ -13,10 +13,10 @@ Memory allocation, pointers to members, references, switch statement.
 -	ex00 Diferent objects on the heap and on the stack.
 -	ex01 Allocated arrays.
 -	ex02 Pointers and references.
--	ex03 more pointers, refs and classes.
--	ex04 basic file input, output file streams and string.
--	ex05 pointers to member functions.
--	ex06 ``switch`` blocks.
+-	ex03 More pointers, refs and classes.
+-	ex04 Basic file input, output file streams and string.
+-	ex05 Pointers to member functions.
+-	ex06 ``switch`` block.
 
 ## Cpp02
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form.
@@ -25,3 +25,11 @@ Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form.
 -	ex01 Overload member functions
 -	ex02 Overload Member functions: comparison operators, arithmetic operators, increment/decrement and min/max
 -	ex03 BSP stands for Binary space partitioning. Example with Point.
+
+## Cpp03
+Inheritance.
+
+-	ex00 Aaaaand... OPEN!
+-	ex01 Serena, my love!
+-	ex02 Repetitive work
+-	ex03 Now it’s weird!
