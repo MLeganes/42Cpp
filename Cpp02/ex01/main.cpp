@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 14:49:07 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/02 14:49:10 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/02 14:52:42 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,5 +30,5 @@ int main() {
     std::cout << "b is " << b.toInt() << " as integer" << std::endl;
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-    return 0;
+    return (0);
 }

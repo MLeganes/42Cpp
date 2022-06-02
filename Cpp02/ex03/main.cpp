@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 14:50:14 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/02 14:50:17 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/02 14:52:14 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,5 +29,5 @@ int main() {
 	const Point p1(4, 4);
 	std::cout << "Point x=" << p1.getX() << " y=" << p1.getY() << " is " << (bsp(a1, b1, c1, p1) ? "inside" : "outside") << std::endl;
 
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/02 14:49:33 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/02 14:49:38 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/02 14:52:47 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,5 +27,5 @@ int main() {
 
     std::cout << Fixed::max( a, b ) << std::endl;
 
-    return 0;
+    return (0);
 }
