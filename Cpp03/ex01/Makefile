@@ -6,17 +6,18 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/02 22:03:50 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/02 22:30:26 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	claptrap
+NAME	=	scavtrap
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
 			ClapTrap.cpp \
+			ScavTrap.cpp \
 
 all:		$(NAME)
 # Linking
