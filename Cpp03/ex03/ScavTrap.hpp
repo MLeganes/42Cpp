@@ -6,8 +6,6 @@
 
 class ScavTrap : public ClapTrap
 {
-private:
-	bool _gate;
 public:
 	// Constructors and Destructor.
 	ScavTrap();

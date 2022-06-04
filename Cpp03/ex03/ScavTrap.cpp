@@ -7,13 +7,11 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->_attackDamage = 20;
 	this->_energyPoints = 50;
 	this->_hitPoints = 100;
-	this->_gate = 0;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
 	std::cout << "ScavTrap " << this->_name << "copy constructor called" << std::endl;
-
 }
 
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
@@ -22,7 +20,6 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 	this->_attackDamage = 20;
 	this->_energyPoints = 50;
 	this->_hitPoints = 100;
-	this->_gate = 0;
 }
 
 ScavTrap::~ScavTrap()
@@ -54,16 +51,5 @@ void ScavTrap::attack(const std::string &target)
 }
 void ScavTrap::guardGate()
 {
-	if (this->_gate)
-	{
-		std::cout << "ScavTrap is now in Gate keeper mode OFF" << std::endl;
-		this->_gate = false;
-	}
-	else
-	{
-		std::cout << "ScavTrap is now in Gate keeper mode ON" << std::endl;
-		this->_gate = true;
-	}
-	if ( this->_energyPoints )
-		this->_energyPoints--;
+	std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
 }

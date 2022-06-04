@@ -2,17 +2,17 @@
 #include <iostream>
 #include <cstdio>
 #include <stdlib.h>
-
-#include "ScavTrap.hpp"
 #include <stdlib.h>
 
-void printGame(ScavTrap *robot[2], int id_atack, int id_take_d)
+#include "DiamondTrap.hpp"
+
+void printGame(DiamondTrap *robot[2], int id_atack, int id_take_d)
 {
 		//system("clear");
 		std::cout << "|*******************************************|" << std::endl;
-		std::cout << "|                  ClapTrap                 |" << std::endl;
+		std::cout << "|                  DiamondTrap                 |" << std::endl;
 		std::cout << "|*******************************************|\n" << std::endl;
-		std::cout << WHITE"1. Attack   2. Be repaired   3. Gate keeper mode  \n" << std::endl;
+		std::cout << WHITE"1. Attack   2. Be repaired   3. Have five    4. WhoAmI \n" << std::endl;
 		
 		std::cout <<  robot[id_atack]->getName() << "\t" << robot[id_atack]->getHitPoints();
 		std::cout <<  "\t" << robot[id_take_d]->getName() << "\t" << robot[id_take_d]->getHitPoints() << "\n" << std::endl;
@@ -22,9 +22,9 @@ void printGame(ScavTrap *robot[2], int id_atack, int id_take_d)
 int main() {
 
 	
-	ScavTrap *clap[2];
-	ScavTrap clap1("Obi-Wan");
-	ScavTrap clap2("Skywalker");
+	DiamondTrap *clap[2];
+	DiamondTrap clap1("Obi-Wan");
+	DiamondTrap clap2("Skywalker");
 
 	clap[0] = &clap1;
 	clap[1] = &clap2;
@@ -53,8 +53,11 @@ int main() {
 			clap[id_atack]->beRepaired(5);
 			break;
 		
-		case 3: // be repaired
-			clap[id_atack]->guardGate();
+		case 3: // have 5
+			clap[id_atack]->highFivesGuys();
+			break;
+		case 4: // whoami
+			clap[id_atack]->whoAmI();
 			break;
 		
 		default:
@@ -64,6 +67,10 @@ int main() {
 		id_take_d = ( id_atack == 1 ) ? 0 : 1;
 
 	}while (clap1.getHitPoints() > 0 && clap2.getHitPoints() > 0);
-
+	printGame(clap, id_take_d, id_atack);
+	if (clap1.getHitPoints() > 0 )
+		std::cout << "🏆 Win " << clap1.getName() << std::endl;
+	else
+		std::cout << "🏆 Win " << clap2.getName() << std::endl;
 	return (0);
 }

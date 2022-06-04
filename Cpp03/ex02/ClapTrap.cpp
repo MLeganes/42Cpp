@@ -42,7 +42,8 @@ void		ClapTrap::attack(const std::string &target)
 	if (this->_energyPoints > 0)
 	{
 		this->_energyPoints--;
-		std::cout 	<< "ClapTrap " << this->_name << " attacks " << target << " causing " <<  this->_attackDamage << " points of damage! " << std::endl;
+		//std::cout 	<< "ClapTrap " << this->_name << " attacks " << target << " causing " <<  this->_attackDamage << " points of damage! " << std::endl;
+		std::cout 	<< "ClapTrap " << this->_name << " attacks " << target << " causing " <<  this->getAttackDamage() << " points of damage! " << std::endl;
 	}
 	else
 	{
@@ -63,12 +64,12 @@ void		ClapTrap::takeDamage(unsigned int amount)
 void		ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energyPoints > 0) {
-        std::cout << "ClapTrap " << this->_name << " is repaired by " << amount << " points" << std::endl;
-        this->_energyPoints--;
-        this->_hitPoints += amount;
-    } else {
-        std::cout << "ClapTrap " << this->_name << " cannot be repaired anymore!" << std::endl;
-    }
+		std::cout << "ClapTrap " << this->_name << " is repaired by " << amount << " points" << std::endl;
+		this->_energyPoints--;
+		this->_hitPoints += amount;
+	} else {
+		std::cout << "ClapTrap " << this->_name << " cannot be repaired anymore!" << std::endl;
+	}
 }
 
 void		ClapTrap::setName(const std::string &name)
@@ -94,17 +95,17 @@ void		ClapTrap::setAttackDamage(unsigned int attackDamage)
 
 const std::string	&ClapTrap::getName() const
 {
-	std::cout << "ClapTrap " << this->_name << " getName() called" << std::endl;
+	//std::cout << "ClapTrap " << this->_name << " getName() called" << std::endl;
 	return (this->_name);
 }
 unsigned int		ClapTrap::getHitPoints() const
 {
-	std::cout << "ClapTrap " << this->_name << " getHitPoints() called" << std::endl;
+	//std::cout << "ClapTrap " << this->_name << " getHitPoints() called" << std::endl;
 	return (this->_hitPoints);
 }
 unsigned int		ClapTrap::getEnergyPoints() const
 {
-	std::cout << "ClapTrap " << this->_name << " getEnergyPoints() called" << std::endl;
+	//std::cout << "ClapTrap " << this->_name << " getEnergyPoints() called" << std::endl;
 	return (this->_energyPoints);
 }
 unsigned int		ClapTrap::getAttackDamage() const

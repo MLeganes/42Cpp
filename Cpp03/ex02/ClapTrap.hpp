@@ -3,6 +3,10 @@
 #include <string>
 #include <iostream>
 
+# define GREEN	"\033[1;32m"
+# define WHITE	"\033[0;37m"
+
+
 class ClapTrap
 {
 protected:
@@ -10,11 +14,10 @@ protected:
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
-
 public:
 	// Constructors and Destructor.
 	ClapTrap();
-	ClapTrap(const ClapTrap &copy);
+	ClapTrap(const ClapTrap &);
 	ClapTrap(const std::string &name);
 	~ClapTrap();
 
@@ -26,7 +29,7 @@ public:
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
 
-	void		setName(const std::string &name);
+	void 		setName(const std::string &name);
 	void		setHitPoints(unsigned int hitPoints);
 	void		setEnergyPoints(unsigned int energyPoints);
 	void		setAttackDamage(unsigned int attackDamage);

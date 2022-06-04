@@ -3,6 +3,10 @@
 #include <string>
 #include <iostream>
 
+# define GREEN	"\033[1;32m"
+# define WHITE	"\033[0;37m"
+
+
 class ClapTrap
 {
 private:
