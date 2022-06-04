@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/04 03:49:25 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/04 13:55:41 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	=	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
 			FragTrap.cpp \
+			DiamondTrap.cpp \
 
 all:		$(NAME)
 # Linking

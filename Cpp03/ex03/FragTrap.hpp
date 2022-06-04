@@ -5,7 +5,7 @@
 #include <string>
 
 // FragTrap class that inherits from ClapTrap
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 private:
 	

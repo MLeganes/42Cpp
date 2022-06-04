@@ -12,9 +12,14 @@ DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy)
 	this->_name = copy._name;
 }
 
-DiamondTrap::DiamondTrap(const std::string &) : ClapTrap(name + "_clap_name")
+DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clap_name")
 {
-	std::cout << "DiamondTrap " << this->_name << " constructor called" << std::endl;
+	std::cout << "DiamondTrap " << name << " constructor called" << std::endl;
+	
+	// error: base class ‘class FragTrap’ should be explicitly initialized in the copy constructor
+	// DiamondTrap::_name = name; 
+	// Solution:
+	DiamondTrap::_name = name; 
 }
 DiamondTrap::~DiamondTrap()
 {}
@@ -40,5 +45,5 @@ void DiamondTrap::whoAmI()
 
 std::string &DiamondTrap::getName()
 {
-	return this->_name();
+	return this->_name;
 }

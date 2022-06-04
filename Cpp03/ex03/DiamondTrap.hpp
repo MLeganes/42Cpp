@@ -3,7 +3,6 @@
 
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
 
 #include <string>
 
