@@ -1,11 +1,11 @@
 # CPP modules
 
 ## Cpp00
-Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff
+Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff.
 
--	ex00 Megaphone
--	ex01 My Awesome PhoneBook
--	ex02 The Job Of Your Dreams
+-	ex00 Megaphone.
+-	ex01 My Awesome PhoneBook.
+-	ex02 The Job Of Your Dreams.
 
 ## Cpp01
 Memory allocation, pointers to members, references, switch statement.
@@ -21,10 +21,10 @@ Memory allocation, pointers to members, references, switch statement.
 ## Cpp02
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form.
 
--	ex00 Class in Orthodox Canonical Form
--	ex01 Overload member functions
--	ex02 Overload Member functions: comparison operators, arithmetic operators, increment/decrement and min/max
--	ex03 BSP stands for Binary space partitioning. Example with Point.
+-	ex00 Class in Orthodox Canonical Form.
+-	ex01 Fixed-point number class: Overload member functions.
+-	ex02 Fixed-point number class: Overload Member functions: comparison operators, arithmetic operators, increment/decrement and min/max.
+-	ex03 BSP stands for Binary space partitioning. Example with Fixed-point number class.
 
 ## Cpp03
 Inheritance.
@@ -35,7 +35,7 @@ Inheritance.
 -	ex03 DiamondTrap class inherit form ScavTrap and FragTrap.
 
 ## Cpp04
-Subtype polymorphism, abstract classes, interfaces
+Subtype polymorphism, abstract classes, interfaces.
 
 -	ex00 
 -	ex01 
