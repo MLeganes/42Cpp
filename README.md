@@ -29,7 +29,15 @@ Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form.
 ## Cpp03
 Inheritance.
 
--	ex00 Aaaaand... OPEN!
--	ex01 Serena, my love!
--	ex02 Repetitive work
--	ex03 Now it’s weird!
+-	ex00 ClapTrap basic class.
+-	ex01 ScavTrap class inherit from ClapTrap.
+-	ex02 FragTrap class inherit from ClapTrap.
+-	ex03 DiamondTrap class inherit form ScavTrap and FragTrap.
+
+## Cpp04
+Subtype polymorphism, abstract classes, interfaces
+
+-	ex00 
+-	ex01 
+-	ex02 
+-	ex03 
