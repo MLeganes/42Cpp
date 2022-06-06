@@ -20,7 +20,7 @@ int main() {
 
 	
 	ClapTrap *clap[2];
-	ClapTrap clap1("Obi-Wan");
+	ClapTrap clap1("Han-Solo");
 	ClapTrap clap2("Skywalker");
 
 	clap[0] = &clap1;

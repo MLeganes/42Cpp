@@ -8,39 +8,43 @@
 
 void printGame(DiamondTrap *robot[2], int id_atack, int id_take_d)
 {
-		//system("clear");
-		std::cout << "|*******************************************|" << std::endl;
-		std::cout << "|                  DiamondTrap                 |" << std::endl;
-		std::cout << "|*******************************************|\n" << std::endl;
-		std::cout << WHITE"1. Attack   2. Be repaired   3. Have five    4. WhoAmI \n" << std::endl;
-		
-		std::cout <<  robot[id_atack]->getName() << "\t" << robot[id_atack]->getHitPoints();
-		std::cout <<  "\t" << robot[id_take_d]->getName() << "\t" << robot[id_take_d]->getHitPoints() << "\n" << std::endl;
-		std::cout << GREEN <<  "Energy points: "<< robot[id_atack]->getEnergyPoints() << " > " << WHITE;
+	// system("clear");
+	std::cout << "|*******************************************|" << std::endl;
+	std::cout << "|                  DiamondTrap                 |" << std::endl;
+	std::cout << "|*******************************************|\n"
+			  << std::endl;
+	std::cout << WHITE "1. Attack   2. Be repaired   3. Have five    4. WhoAmI \n"
+			  << std::endl;
+
+	std::cout << robot[id_atack]->getName() << "\t" << robot[id_atack]->getHitPoints();
+	std::cout << "\t" << robot[id_take_d]->getName() << "\t" << robot[id_take_d]->getHitPoints() << "\n"
+			  << std::endl;
+	std::cout << GREEN << "Energy points: " << robot[id_atack]->getEnergyPoints() << " > " << WHITE;
 }
 
-int main() {
+int main()
+{
 
-	
 	DiamondTrap *clap[2];
-	DiamondTrap clap1("Obi-Wan");
+	DiamondTrap clap1("Han-Solo");
 	DiamondTrap clap2("Skywalker");
-
+	clap1.setAttackDamage(30); // Better 20 to be able to finish the game.
+	clap2.setAttackDamage(30);
 	clap[0] = &clap1;
 	clap[1] = &clap2;
 
 	std::string line;
 	int opt;
 
-
 	int id_atack = 0;
 	int id_take_d = 1;
-	do {
+	do
+	{
 		printGame(clap, id_atack, id_take_d);
 		std::getline(std::cin, line);
 		if (std::cin.eof() == true)
 			exit(0);
-		
+
 		opt = atoi(line.c_str());
 		switch (opt)
 		{
@@ -52,25 +56,26 @@ int main() {
 		case 2: // be repaired
 			clap[id_atack]->beRepaired(5);
 			break;
-		
+
 		case 3: // have 5
 			clap[id_atack]->highFivesGuys();
 			break;
 		case 4: // whoami
 			clap[id_atack]->whoAmI();
 			break;
-		
+
 		default:
 			break;
 		}
-		id_atack = ( id_atack == 0 ) ? 1 : 0;
-		id_take_d = ( id_atack == 1 ) ? 0 : 1;
+		id_atack = (id_atack == 0) ? 1 : 0;
+		id_take_d = (id_atack == 1) ? 0 : 1;
 
-	}while (clap1.getHitPoints() > 0 && clap2.getHitPoints() > 0);
+	} while (clap1.getHitPoints() > 0 && clap2.getHitPoints() > 0);
 	printGame(clap, id_take_d, id_atack);
-	if (clap1.getHitPoints() > 0 )
+	if (clap1.getHitPoints() > 0)
 		std::cout << "🏆 Win " << clap1.getName() << std::endl;
 	else
 		std::cout << "🏆 Win " << clap2.getName() << std::endl;
+	system("leaks diamondTrap");
 	return (0);
 }

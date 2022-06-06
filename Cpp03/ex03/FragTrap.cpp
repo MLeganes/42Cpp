@@ -9,6 +9,7 @@ FragTrap::FragTrap()
 	this->_hitPoints = 100;
 }
 
+// Copy constructors.
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
 	std::cout << "FragTrap " << this->_name << "copy constructor called" << std::endl;
@@ -17,9 +18,6 @@ FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
 	std::cout << "FragTrap " << this->_name << " constructor called" << std::endl;
-	this->_attackDamage = 30;
-	this->_energyPoints = 100;
-	this->_hitPoints = 100;
 }
 
 FragTrap::FragTrap::~FragTrap()
@@ -40,7 +38,7 @@ void FragTrap::highFivesGuys(void)
 {
 	if (this->_energyPoints)
 	{
-		std::cout << "FragTrap " << this->_name << "Give me fives guys ... ! ✋ " << std::endl;
+		std::cout << "FragTrap " << this->_name << " Have five guys ✋!!!" << std::endl;
 		this->_energyPoints--;
 	}
 }

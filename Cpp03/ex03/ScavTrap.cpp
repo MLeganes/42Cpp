@@ -9,7 +9,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->_hitPoints = 100;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
+// Copy constructors.
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy._name)
 {
 	std::cout << "ScavTrap " << this->_name << "copy constructor called" << std::endl;
 }
@@ -41,13 +42,12 @@ void ScavTrap::attack(const std::string &target)
 	if (this->_energyPoints > 0)
 	{
 		this->_energyPoints--;
-		std::cout 	<< "ScavTrap " << this->_name << " attacks " << target << " causing " <<  this->_attackDamage << " points of damage! " << std::endl;
+		std::cout << "ScavTrap " << this->_name << " attacks " << target << " causing " << this->_attackDamage << " points of damage! " << std::endl;
 	}
 	else
 	{
-		std::cout 	<< "ScavTrap " << this->_name << " can NOT attacks!" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " can NOT attacks!" << std::endl;
 	}
-
 }
 void ScavTrap::guardGate()
 {

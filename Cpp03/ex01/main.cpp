@@ -10,7 +10,7 @@ void printGame(ScavTrap *robot[2], int id_atack, int id_take_d)
 {
 		//system("clear");
 		std::cout << "|*******************************************|" << std::endl;
-		std::cout << "|                  ClapTrap                 |" << std::endl;
+		std::cout << "|                  ScavTrap                 |" << std::endl;
 		std::cout << "|*******************************************|\n" << std::endl;
 		std::cout << WHITE"1. Attack   2. Be repaired   3. Gate keeper mode  \n" << std::endl;
 		
@@ -23,7 +23,7 @@ int main() {
 
 	
 	ScavTrap *clap[2];
-	ScavTrap clap1("Obi-Wan");
+	ScavTrap clap1("Han-Solo");
 	ScavTrap clap2("Skywalker");
 
 	clap[0] = &clap1;

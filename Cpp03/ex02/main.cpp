@@ -23,7 +23,7 @@ int main() {
 
 	
 	FragTrap *clap[2];
-	FragTrap clap1("Obi-Wan");
+	FragTrap clap1("Han-Solo");
 	FragTrap clap2("Skywalker");
 
 	clap[0] = &clap1;
