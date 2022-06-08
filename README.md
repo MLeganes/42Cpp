@@ -39,5 +39,6 @@ Subtype polymorphism, abstract classes, interfaces.
 
 -	ex00 Polymorphism. Implement base class Animal. Dog and Cat inherits from Animal.
 -	ex01 Implement a Brain class.
--	ex02 Abstract class
--	ex03 
+-	ex02 Animal Abstract class.
+-	ex03 Interface & recap.
+
