@@ -1,5 +1,5 @@
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <string>
@@ -11,7 +11,7 @@
 
 int main()
 {
-	Animal *animals[MAXANIMALS];
+	AAnimal *animals[MAXANIMALS];
 
 	int i = 0;
 	for(;i < (MAXANIMALS / 2); i++)
@@ -35,13 +35,13 @@ int main()
 		}
 	}
 
-	Dog *dog = new Dog(*(Dog *)animals[0]);
-	dog->setIdea(0, " This a dog idea! ");
-	dog->setIdea(1, " This a dog idea! ");
+	AAnimal *dog = new Dog(*(Dog *)animals[0]);
+	((Dog *)dog)->setIdea(0, " This a dog idea! ");
+	((Dog *)dog)->setIdea(1, " This a dog idea! ");
 
 	for (int x = 0; x < MAXIDEAS; x++)
 	{
-		std::cout << "---------------Type " << dog->getType() << dog->getIdea(x) << x << std::endl;
+		std::cout << "---------------Type " << ((Dog *)dog)->getType() << ((Dog *)dog)->getIdea(x) << x << std::endl;
 	}
 
 	std::cout << std::endl << "---------------Delete dog-----------------" << std::endl;

@@ -37,7 +37,7 @@ Inheritance.
 ## Cpp04
 Subtype polymorphism, abstract classes, interfaces.
 
--	ex00 
--	ex01 
--	ex02 
+-	ex00 Polymorphism. Implement base class Animal. Dog and Cat inherits from Animal.
+-	ex01 Implement a Brain class.
+-	ex02 Abstract class
 -	ex03 

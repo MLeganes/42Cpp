@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal(), _brain(new Brain())
+Cat::Cat() : AAnimal(), _brain(new Brain())
 {
 	this->_type = "Cat";
 
@@ -9,7 +9,7 @@ Cat::Cat() : Animal(), _brain(new Brain())
 	
 	std::cout << "Cat default constructor called" << std::endl;
 }
-Cat::Cat(const Cat &copy) : Animal(copy), _brain(new Brain(*copy.getBrain()))
+Cat::Cat(const Cat &copy) : AAnimal(copy), _brain(new Brain(*copy.getBrain()))
 {
 	std::cout << "Cat " << this->_type << " copy constructor called" << std::endl;
 }
