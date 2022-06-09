@@ -10,10 +10,10 @@ void printGame(DiamondTrap *robot[2], int id_atack, int id_take_d)
 {
 	// system("clear");
 	std::cout << "|*******************************************|" << std::endl;
-	std::cout << "|                  DiamondTrap                 |" << std::endl;
+	std::cout << "|                  DiamondTrap              |" << std::endl;
 	std::cout << "|*******************************************|\n"
 			  << std::endl;
-	std::cout << WHITE "1. Attack   2. Be repaired   3. Have five    4. WhoAmI \n"
+	std::cout << WHITE "1. Attack   2. Be repaired   3. Have five    4. WhoAmI  5. Gate keeper mode  \n "
 			  << std::endl;
 
 	std::cout << robot[id_atack]->getName() << "\t" << robot[id_atack]->getHitPoints();
@@ -64,6 +64,10 @@ int main()
 			clap[id_atack]->whoAmI();
 			break;
 
+		case 5: // Guard gate
+			clap[id_atack]->guardGate();
+			break;
+
 		default:
 			break;
 		}
@@ -76,6 +80,5 @@ int main()
 		std::cout << "🏆 Win " << clap1.getName() << std::endl;
 	else
 		std::cout << "🏆 Win " << clap2.getName() << std::endl;
-	system("leaks diamondTrap");
 	return (0);
 }
