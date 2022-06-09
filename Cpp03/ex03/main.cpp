@@ -76,6 +76,5 @@ int main()
 		std::cout << "🏆 Win " << clap1.getName() << std::endl;
 	else
 		std::cout << "🏆 Win " << clap2.getName() << std::endl;
-	system("leaks diamondTrap");
 	return (0);
 }
