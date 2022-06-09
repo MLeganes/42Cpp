@@ -10,6 +10,7 @@ int main()
 
 	std::cout << "1._Example with basic Animal class" << std::endl;
 	const Animal* meta = new Animal();
+	std::cout << "Get type of animal: " << meta->getType() << " " << std::endl;
 	meta->makeSound();
 	delete meta;
 	
