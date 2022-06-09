@@ -36,7 +36,6 @@ int main()
 		}
 	}
 
-
 	std::cout << std::endl << "2). Example with Copy-dog" << std::endl;
 	Animal *dog = new Dog(*(Dog *)animals[0]);
 
