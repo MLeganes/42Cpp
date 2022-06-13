@@ -32,7 +32,7 @@ Inheritance.
 -	ex00 ClapTrap basic class.
 -	ex01 ScavTrap class inherit from ClapTrap.
 -	ex02 FragTrap class inherit from ClapTrap.
--	ex03 DiamondTrap class inherit form ScavTrap and FragTrap.
+-	ex03 DiamondTrap class inherit form ScavTrap and FragTrap (Virtual).
 
 ## Cpp04
 Subtype polymorphism, abstract classes, interfaces.
@@ -42,11 +42,11 @@ Subtype polymorphism, abstract classes, interfaces.
 -	ex02 Animal Abstract class.
 -	ex03 Abstract and Interface.
 
-# Cpp05
+## Cpp05
 Repetition and Exceptions
 
--	ex00
--	ex01 
--	ex02 
+-	ex00 Bureaucrat class with our own exception.
+-	ex01 Form class with our own exception.
+-	ex02 Abstract class Form.
 -	ex03 
 

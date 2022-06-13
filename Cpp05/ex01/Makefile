@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/13 13:49:21 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/13 20:36:15 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FLAGS	=	-Wall -Wextra -Werror -std=c++98
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \
+			Form.cpp \
 
 all:		$(NAME)
 # Linking

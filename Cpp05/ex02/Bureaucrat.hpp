@@ -4,6 +4,17 @@
 #include <string>
 #include <iostream>
 
+#include "Form.hpp"
+
+/* Error:
+ * Bureaucrat.hpp:30:19: error: ‘Form’ has not been declared
+ * 30 |  void    signForm(Form &form);
+ *    |                   ^~~~
+ * Error fix:
+ * Add the line 16
+ */
+class Form;
+
 class Bureaucrat
 {
 private:
@@ -25,6 +36,7 @@ public:
 
 	void				increaseGrade();
 	void				decreaseGrade();
+	void				signForm(Form &form);
 
 
 	// Exception class Declaration. NO Orthodox Canonical Form.
