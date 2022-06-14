@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("defaultBureaucrat"), _grade(150)
 {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
@@ -80,12 +80,12 @@ void Bureaucrat::signForm(Form &form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+		std::cout << GREEN << *this << " signed " << form << WHITE << std::endl;
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
-		exit(1) ;
+		std::cerr << RED << e.what() << WHITE << std::endl;
+		throw Bureaucrat::NoSignException();
 	}
 }
 
@@ -101,9 +101,15 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("error: Bureaucrat: grade too low");
 };
 
+// Exception implementation
+const char *Bureaucrat::NoSignException::what() const throw()
+{
+	return ("error: Bureaucrat: No Grade No Sign. Keep working to get high Grade. 1 is the Highest");
+};
+
 // Function to the Bureaucrat class.
 std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure)
 {
-	ost << bure.getName() << " , bureaucrat grade " << bure.getGrade() << std::endl;
+	ost << bure.getName() << ", bureaucrat grade" << bure.getGrade();
 	return (ost);
 }

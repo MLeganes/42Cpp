@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() : _name("default"), _isSigned(false), _signGrade(150), _executeGrade(150)
+Form::Form() : _name("defaultForm"), _isSigned(false), _signGrade(150), _executeGrade(150)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
@@ -49,8 +49,6 @@ int Form::getExecuteGrade() const
 
 void Form::beSigned(Bureaucrat &person2sign)
 {
-	// If the bureaucrat’s grade is high enough (higher or egal to the required one).
-	// Remember, grade 1 is higher than grade 2.
 	if (person2sign.getGrade() > this->getSignGrade())
 	{
 		throw Form::GradeTooLowException();
@@ -72,9 +70,9 @@ const char *Form::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &ost, const Form &form)
 {
-	ost << "Formular-name: " << form.getName()
+	ost << form.getName()
 		<< " Signed:" << (form.getIsSigned() ? "true" : "false")
 		<< " Sign-grade:" << form.getSignGrade()
-		<< " Execute-grade:" << form.getExecuteGrade() << std::endl;
+		<< " Execute-grade:" << form.getExecuteGrade();
 	return (ost);
 }

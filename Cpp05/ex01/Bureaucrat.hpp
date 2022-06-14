@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 
+# define GREEN	"\033[1;32m"
+# define WHITE	"\033[0;37m"
+# define RED	"\033[31m"
+
 #include "Form.hpp"
 
 /* Error:
@@ -48,6 +52,13 @@ public:
 	
 	// Exception class Declaration. NO Orthodox Canonical Form.
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+
+	// Exception class Declaration. NO Orthodox Canonical Form.
+	class NoSignException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();

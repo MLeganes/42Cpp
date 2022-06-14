@@ -90,6 +90,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 // Function to the Bureaucrat class.
 std::ostream &operator<<(std::ostream &ost, Bureaucrat &bure)
 {
-	ost << bure.getName() << " , bureaucrat grade " << bure.getGrade() << std::endl;
+	ost << bure.getName() << ", bureaucrat grade " << bure.getGrade() << std::endl;
 	return (ost);
 }
