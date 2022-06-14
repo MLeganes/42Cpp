@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /* Error:
  * Bureaucrat.hpp:30:19: error: ‘Form’ has not been declared
@@ -13,7 +13,7 @@
  * Error fix:
  * Add the line 16
  */
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -31,12 +31,14 @@ public:
 
 	void				setName(std::string &name);
 	void				setGrade(int grade);
-	const std::string	&getName() const;
-	int					getGrade() const;
+	const std::string	&getName() const; //
+	int					getGrade() const;//
 
 	void				increaseGrade();
 	void				decreaseGrade();
-	void				signForm(Form &form);
+	void				signForm(AForm &form);
+	void				executeForm(const AForm &);
+
 
 
 	// Exception class Declaration. NO Orthodox Canonical Form.
@@ -56,6 +58,6 @@ public:
 
 // Overload of the insertion («) operator
 // Atention: It must be out of the class!!!
-std::ostream &operator<<(std::ostream &ost, Bureaucrat &bure);
+std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure);
 
 #endif

@@ -75,7 +75,7 @@ void Bureaucrat::decreaseGrade()
 	this->setGrade(this->_grade + 1);
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -88,21 +88,31 @@ void Bureaucrat::signForm(Form &form)
 	}
 }
 
+void Bureaucrat::executeForm(const AForm &form)
+{
+	try {
+		form.execute(*this);
+		std::cout << *this << " executed " << form << std::endl;
+	} catch (std::exception &exception) {
+		std::cerr << this << " couldn't execute  because " << exception.what() << std::endl;
+	}
+}
+
 // Exception implementation
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("error: Bureaucrat: Increasing grade out of range, too high");
+	return ("error: Bureaucrat: grade too high");
 };
 
 // Exception implementation
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("error: Bureaucrat: Decreasing grade out of range, too low");
+	return ("error: Bureaucrat: grade too low");
 };
 
 // Function to the Bureaucrat class.
-std::ostream &operator<<(std::ostream &ost, Bureaucrat &bure)
+std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure)
 {
-	ost << bure.getName() << " , bureaucrat grade " << bure.getGrade() << std::endl;
+	ost << bure.getName() << ", bureaucrat grade " << bure.getGrade() << std::endl;
 	return (ost);
 }

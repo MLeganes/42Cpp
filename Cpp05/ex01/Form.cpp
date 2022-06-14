@@ -25,10 +25,7 @@ Form &Form::operator=(const Form &copy)
 {
 	if (this != &copy)
 	{
-		// this->_name = copy.getName();
 		this->_isSigned = copy.getIsSigned();
-		// this->_signGrade = copy.getSignGrade();
-		// this->_executeGrade = copy.getExecuteGrade();
 	}
 	return (*this);
 }
@@ -64,20 +61,20 @@ void Form::beSigned(Bureaucrat &person2sign)
 // Exception class Declaration. NO Orthodox Canonical Form.
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("error: Form: Increasing grade out of range, too high");
+	return ("error: Form: grade too high");
 }
 
 // Exception class Declaration. NO Orthodox Canonical Form.
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("error: Form: Decreasing grade out of range, too low");
+	return ("error: Form: grade too low");
 }
 
-std::ostream &operator<<(std::ostream &ost, Form &form)
+std::ostream &operator<<(std::ostream &ost, const Form &form)
 {
-	ost << "Form name " << form.getName()
-		<< " signed: " << (form.getIsSigned() ? "True" : "False")
-		<< " sign grade: " << form.getSignGrade()
-		<< " execute grade " << form.getExecuteGrade() << std::endl;
+	ost << "Formular-name: " << form.getName()
+		<< " Signed:" << (form.getIsSigned() ? "true" : "false")
+		<< " Sign-grade:" << form.getSignGrade()
+		<< " Execute-grade:" << form.getExecuteGrade() << std::endl;
 	return (ost);
 }

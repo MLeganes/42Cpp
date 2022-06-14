@@ -56,6 +56,6 @@ public:
 
 // Overload of the insertion («) operator
 // Atention: It must be out of the class!!!
-std::ostream &operator<<(std::ostream &ost, Bureaucrat &bure);
+std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure);
 
 #endif

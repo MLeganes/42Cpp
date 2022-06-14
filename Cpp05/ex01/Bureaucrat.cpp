@@ -85,23 +85,24 @@ void Bureaucrat::signForm(Form &form)
 	catch(const std::exception& e)
 	{
 		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		exit(1) ;
 	}
 }
 
 // Exception implementation
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("error: Bureaucrat: Increasing grade out of range, too high");
+	return ("error: Bureaucrat: grade too high");
 };
 
 // Exception implementation
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("error: Bureaucrat: Decreasing grade out of range, too low");
+	return ("error: Bureaucrat: grade too low");
 };
 
 // Function to the Bureaucrat class.
-std::ostream &operator<<(std::ostream &ost, Bureaucrat &bure)
+std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure)
 {
 	ost << bure.getName() << " , bureaucrat grade " << bure.getGrade() << std::endl;
 	return (ost);

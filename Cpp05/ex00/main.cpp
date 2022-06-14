@@ -1,30 +1,45 @@
 #include "Bureaucrat.hpp"
 #include <unistd.h>
 
+# define GREEN	"\033[1;32m"
+# define WHITE	"\033[0;37m"
+# define RED	"\033[31m"
+
 int main()
 {
-	Bureaucrat bure1("Skywalker", 3);
-
+	std::cout << GREEN << std::endl << " 1). Test " << WHITE << std::endl;
 	try
 	{
-		std::cout << bure1 << std::endl;
+		// Exceptions in constructor
+		//Bureaucrat bur("Administrator", 0);
+		//Bureaucrat bur("Administrator", 151);
+		Bureaucrat bur("Administrator", 100);
+		std::cout << bur << std::endl;
 
-		bure1.setGrade(10);
-		std::cout << bure1 << std::endl;
+		bur.increaseGrade();
+		std::cout << bur << std::endl;
 
-		// error
-		bure1.setGrade(1);
-		std::cout << bure1 << std::endl;
-		bure1.increaseGrade();
+		bur.setGrade(1);
+		std::cout << bur << std::endl;
 
-		// error
-		// bure1.setGrade(150);
-		// std::cout << bure1 << std::endl;
-		// bure1.decreaseGrade();
+		// Exception while INcreasing
+		//bur.increaseGrade();
+		//std::cout << bur << std::endl;
+
+		bur.setGrade(149);
+		std::cout << bur << std::endl;
+
+		bur.decreaseGrade();
+		std::cout << bur << std::endl;
+		
+		// Exception while DEcreasing
+		//bur.decreaseGrade();
+		//std::cout << bur << std::endl;	
 	}
-	catch (const std::exception &e)
+	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
+
 	return 0;
 }

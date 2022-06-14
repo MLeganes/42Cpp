@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/13 20:36:15 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/14 20:39:07 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	bureaucrat
+NAME	=	bureaucrat01
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 

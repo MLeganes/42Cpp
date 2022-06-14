@@ -14,7 +14,7 @@ Memory allocation, pointers to members, references, switch statement.
 -	ex01 Allocated arrays.
 -	ex02 Pointers and references.
 -	ex03 More pointers, refs and classes.
--	ex04 Basic file input, output file streams and string.
+-	ex04 Files input, output streams and string.
 -	ex05 Pointers to member functions.
 -	ex06 ``switch`` block.
 
@@ -43,10 +43,10 @@ Subtype polymorphism, abstract classes, interfaces.
 -	ex03 Abstract and Interface.
 
 ## Cpp05
-Repetition and Exceptions
+Try-Catch and Exceptions
 
 -	ex00 Bureaucrat class with our own exception.
 -	ex01 Form class with our own exception.
--	ex02 Abstract class Form.
+-	ex02 Abstract class.
 -	ex03 
 

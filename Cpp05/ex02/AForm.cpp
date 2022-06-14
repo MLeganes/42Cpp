@@ -20,6 +20,7 @@ AForm::AForm(const std::string name, int signGrade, int executeGrade) : _name(na
 
 AForm::~AForm()
 {
+	std::cout << "AForm default deconstructor called" << std::endl;
 }
 
 AForm &AForm::operator=(const AForm &copy)
@@ -57,7 +58,7 @@ void AForm::beSigned(Bureaucrat &person2sign)
 	// Remember, grade 1 is higher than grade 2.
 	if (person2sign.getGrade() > this->getSignGrade())
 	{
-		throw AForm::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	this->_isSigned = true;
 }
@@ -65,20 +66,26 @@ void AForm::beSigned(Bureaucrat &person2sign)
 // Exception class Declaration. NO Orthodox Canonical AForm.
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("error: AForm: Increasing grade out of range, too high");
+	return ("error: Form: Increasing grade out of range, too high");
 }
 
 // Exception class Declaration. NO Orthodox Canonical AForm.
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("error: AForm: Decreasing grade out of range, too low");
+	return ("error: Form: Decreasing grade out of range, too low");
 }
 
-std::ostream &operator<<(std::ostream &ost, AForm &form)
+// Exception class Declaration. NO Orthodox Canonical AForm.
+const char *AForm::NoSignedFormException::what() const throw()
 {
-	ost << "AForm name " << form.getName()
+	return ("error: Form: NO signed");
+}
+
+std::ostream &operator<<(std::ostream &ost, const AForm &form)
+{
+	ost << "Form name " << form.getName()
 		<< " signed: " << (form.isSigned() ? "True" : "False")
 		<< " sign grade: " << form.getSignGrade()
-		<< " execute grade " << form.getExecuteGrade() << std::endl;
+		<< " execute grade: " << form.getExecuteGrade();
 	return (ost);
 }

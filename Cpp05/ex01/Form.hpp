@@ -56,6 +56,6 @@ public:
 
 };
 
-std::ostream &operator<<(const std::ostream &ost, Form &form);
+std::ostream &operator<<(std::ostream &ost, const Form &form);
 
 #endif

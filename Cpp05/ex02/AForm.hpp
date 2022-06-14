@@ -6,15 +6,7 @@
 
 #include "Bureaucrat.hpp"
 
-/* Error:
- * Form.hpp:31:16: error: ‘Bureaucrat’ has not been declared
- *   31 |  void beSigned(Bureaucrat &bure);
- *      |                ^~~~~~~~~~
- * Error fix:
- * Add the line 16
- */
 class Bureaucrat;
-
 
 class AForm
 {
@@ -54,9 +46,15 @@ public:
 		public:
 			virtual const char *what() const throw();
 	};
+	// Exception class Declaration. NO Orthodox Canonical AForm.
+	class NoSignedFormException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
 
 };
 
-std::ostream &operator<<(const std::ostream &ost, AForm &form);
+std::ostream &operator<<(std::ostream &ost, const AForm &form);
 
 #endif
