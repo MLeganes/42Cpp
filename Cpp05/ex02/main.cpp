@@ -9,7 +9,8 @@
 
 int main()
 {
-	std::cout << GREEN << std::endl << " 1). Test ShrubberyCreationForm" << WHITE << std::endl;
+	std::cout << GREEN << std::endl
+			  << " 1). Test ShrubberyCreationForm" << WHITE << std::endl;
 	try
 	{
 		/***
@@ -20,7 +21,6 @@ int main()
 		// Bureaucrat constructor
 		Bureaucrat bur("Administrator", 148);
 
-		
 		/***
 		 *
 		 * ShrubberyCreationForm Test
@@ -32,10 +32,10 @@ int main()
 		try
 		{
 			// Exception no-sign formular
-			//bur.signForm(scForm);
+			// bur.signForm(scForm);
 
 			// Exceptioin no-execution
-			//bur.executeForm(scForm);
+			// bur.executeForm(scForm);
 
 			bur.setGrade(10);
 			bur.signForm(scForm);
@@ -45,7 +45,7 @@ int main()
 		{
 			std::cout << RED << bur << " couldn’t sign " << scForm << " because " << e.what() << WHITE << std::endl;
 		}
-		catch (const Bureaucrat::NoExecutionSignException &e )
+		catch (const Bureaucrat::NoExecutionSignException &e)
 		{
 			std::cout << RED << bur << " couldn’t execute " << scForm << " because " << e.what() << WHITE << std::endl;
 		}
@@ -58,9 +58,9 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
-	
-	std::cout << GREEN << std::endl << " 2). Test RobotomyRequestForm" << WHITE << std::endl;
+
+	std::cout << GREEN << std::endl
+			  << " 2). Test RobotomyRequestForm" << WHITE << std::endl;
 	try
 	{
 		/***
@@ -71,7 +71,6 @@ int main()
 		// Bureaucrat constructor
 		Bureaucrat bur("Administrator", 148);
 
-		
 		/***
 		 *
 		 * ShrubberyCreationForm Test
@@ -83,10 +82,10 @@ int main()
 		try
 		{
 			// Exception no-sign formular
-			//bur.signForm(scForm);
+			// bur.signForm(scForm);
 
 			// Exceptioin no-execution
-			//bur.executeForm(scForm);
+			// bur.executeForm(scForm);
 
 			bur.setGrade(10);
 			bur.signForm(scForm);
@@ -96,7 +95,7 @@ int main()
 		{
 			std::cout << RED << bur << " couldn’t sign " << scForm << " because " << e.what() << WHITE << std::endl;
 		}
-		catch (const Bureaucrat::NoExecutionSignException &e )
+		catch (const Bureaucrat::NoExecutionSignException &e)
 		{
 			std::cout << RED << bur << " couldn’t execute " << scForm << " because " << e.what() << WHITE << std::endl;
 		}
@@ -109,9 +108,9 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
 
-	std::cout << GREEN << std::endl << " 3). Test PresidentialPardonForm" << WHITE << std::endl;
+	std::cout << GREEN << std::endl
+			  << " 3). Test PresidentialPardonForm" << WHITE << std::endl;
 	try
 	{
 		/***
@@ -122,7 +121,6 @@ int main()
 		// Bureaucrat constructor
 		Bureaucrat bur("Administrator", 148);
 
-		
 		/***
 		 *
 		 * ShrubberyCreationForm Test
@@ -134,10 +132,10 @@ int main()
 		try
 		{
 			// Exception no-sign formular
-			//bur.signForm(scForm);
+			// bur.signForm(scForm);
 
 			// Exceptioin no-execution
-			//bur.executeForm(scForm);
+			// bur.executeForm(scForm);
 
 			bur.setGrade(10);
 			bur.signForm(scForm);
@@ -148,7 +146,7 @@ int main()
 		{
 			std::cout << RED << bur << " couldn’t sign " << scForm << " because " << e.what() << WHITE << std::endl;
 		}
-		catch (const Bureaucrat::NoExecutionSignException &e )
+		catch (const Bureaucrat::NoExecutionSignException &e)
 		{
 			std::cout << RED << bur << " couldn’t execute " << scForm << " because " << e.what() << WHITE << std::endl;
 		}

@@ -8,14 +8,13 @@
 
 /***
  * PresidentialPardonForm: Required grades: sign 25, exec 5
- *
+ * 
  *
  ***/
 class PresidentialPardonForm : public AForm
 {
 private:
 	std::string _target;
-
 public:
 	PresidentialPardonForm();
 	PresidentialPardonForm(const PresidentialPardonForm &copy);
@@ -24,8 +23,8 @@ public:
 
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &copy);
 
-	void setTarget(const std::string &target);
-	const std::string getTarget() const;
+	void				setTarget(const std::string &target);
+	const std::string	getTarget() const;
 
 	void execute(const Bureaucrat &executor) const;
 };
