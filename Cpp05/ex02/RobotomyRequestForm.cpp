@@ -10,7 +10,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : AFor
 	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm target constructor called" << std::endl;
 }
@@ -39,11 +39,11 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > this->getExecuteGrade())
 	{
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 	if (this->isSigned() == false)
 	{
-		throw NoSignedFormException(); 
+		throw AForm::NoSignedFormException();
 	}
 	std::cout << RED << std::endl << "Start drilling..." << std::endl;
 	std::cout << "drilling..." << std::endl;
