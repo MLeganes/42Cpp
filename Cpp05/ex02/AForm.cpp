@@ -54,11 +54,9 @@ int AForm::getExecuteGrade() const
 
 void AForm::beSigned(Bureaucrat &person2sign)
 {
-	// If the bureaucrat’s grade is high enough (higher or egal to the required one).
-	// Remember, grade 1 is higher than grade 2.
 	if (person2sign.getGrade() > this->getSignGrade())
 	{
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 	this->_isSigned = true;
 }
@@ -66,13 +64,13 @@ void AForm::beSigned(Bureaucrat &person2sign)
 // Exception class Declaration. NO Orthodox Canonical AForm.
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("error: Form: Increasing grade out of range, too high");
+	return ("error: Form: grade too high");
 }
 
 // Exception class Declaration. NO Orthodox Canonical AForm.
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("error: Form: Decreasing grade out of range, too low");
+	return ("error: Form: grade too low");
 }
 
 // Exception class Declaration. NO Orthodox Canonical AForm.
@@ -83,9 +81,9 @@ const char *AForm::NoSignedFormException::what() const throw()
 
 std::ostream &operator<<(std::ostream &ost, const AForm &form)
 {
-	ost << "Form name " << form.getName()
-		<< " signed: " << (form.isSigned() ? "True" : "False")
-		<< " sign grade: " << form.getSignGrade()
-		<< " execute grade: " << form.getExecuteGrade();
+	ost << form.getName()
+		<< " Signed:" << (form.isSigned() ? "true" : "false")
+		<< " Sign-grade:" << form.getSignGrade()
+		<< " Execute-grade:" << form.getExecuteGrade();
 	return (ost);
 }

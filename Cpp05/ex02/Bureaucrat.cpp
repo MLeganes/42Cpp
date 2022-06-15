@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("defaultBureaucrat"), _grade(150)
 {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
@@ -80,39 +80,64 @@ void Bureaucrat::signForm(AForm &form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+		std::cout << GREEN << *this << " signed " << form << WHITE << std::endl;
 	}
-	catch(const std::exception& e)
+	catch (const AForm::GradeTooLowException &e)
 	{
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		throw Bureaucrat::NoSignException();
 	}
 }
 
 void Bureaucrat::executeForm(const AForm &form)
 {
-	try {
+	try
+	{
 		form.execute(*this);
-		std::cout << *this << " executed " << form << std::endl;
-	} catch (std::exception &exception) {
-		std::cerr << this << " couldn't execute  because " << exception.what() << std::endl;
+		std::cout << GREEN << *this << " executed " << form << WHITE << std::endl;
+	}
+	catch (const AForm::NoSignedFormException &e)
+	{
+		throw Bureaucrat::NoExecutionSignException();
+	}
+	catch (const  AForm::GradeTooLowException &e)
+	{
+		throw Bureaucrat::NoExecutionGradeLowException();
 	}
 }
 
 // Exception implementation
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("error: Bureaucrat: grade too high");
+	return ("error: Bureaucrat: Grade too high");
 };
 
 // Exception implementation
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("error: Bureaucrat: grade too low");
+	return ("error: Bureaucrat: Grade too low");
+};
+
+// Exception implementation
+const char *Bureaucrat::NoSignException::what() const throw()
+{
+	return ("error: Bureaucrat: No signed because the grade is too low");
+};
+
+// Exception implementation
+const char *Bureaucrat::NoExecutionSignException::what() const throw()
+{
+	return ("error: Bureaucrat: No execution because form is not signed");
+};
+
+// Exception implementation
+const char *Bureaucrat::NoExecutionGradeLowException::what() const throw()
+{
+	return ("error: Bureaucrat: No execution because grade is low");
 };
 
 // Function to the Bureaucrat class.
 std::ostream &operator<<(std::ostream &ost, const Bureaucrat &bure)
 {
-	ost << bure.getName() << ", bureaucrat grade " << bure.getGrade() << std::endl;
+	ost << bure.getName() << ", bureaucrat grade " << bure.getGrade();
 	return (ost);
 }

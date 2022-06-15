@@ -38,15 +38,15 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > this->getExecuteGrade())
 	{
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 	if (this->isSigned() == false)
 	{
-		throw NoSignedFormException(); 
+		throw AForm::NoSignedFormException(); 
 	}
-	
+
 	std::ofstream file;
-	file.open(this->_target + "_shrubbery");
+	file.open((this->_target + "_shrubbery").c_str());
 	if (file.is_open() == false)
 	{
 		std::cout << "Error: file \"" << (this->_target + "_shrubbery") << "\" can not be opened "  << std::endl;

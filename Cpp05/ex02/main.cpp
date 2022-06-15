@@ -1,75 +1,61 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-# define GREEN	"\033[1;32m"
-# define WHITE	"\033[0;37m"
-# define RED	"\033[31m"
+#define GREEN "\033[1;32m"
+#define WHITE "\033[0;37m"
+#define RED "\033[31m"
 
 int main()
 {
-
+	std::cout << GREEN << std::endl << " 1). Test " << WHITE << std::endl;
 	try
 	{
-		Bureaucrat bur("Administrator", 100);
-		std::cout << bur << std::endl;
+		/***
+		 *
+		 * Bureaucrat Test
+		 *
+		 ***/
+		// Bureaucrat constructor
+		Bureaucrat bur("Administrator", 148);
 
-		bur.increaseGrade();
-		std::cout << bur << std::endl;
-
-		bur.setGrade(1);
-		std::cout << bur << std::endl;
-
-		// Exception
-		//bur.increaseGrade();
-		//std::cout << bur << std::endl;
-
-		bur.setGrade(149);
-		std::cout << bur << std::endl;
-
-		bur.decreaseGrade();
-		std::cout << bur << std::endl;
 		
-		// Exception
-		//bur.decreaseGrade();
-		//std::cout << bur << std::endl;
+		/***
+		 *
+		 * ShrubberyCreationForm Test
+		 *
+		 ***/
+		// Form Constructor
+		ShrubberyCreationForm scForm("FormularShrubberyEx02");
 
-		AForm form
+		try
+		{
+			// Exception no-sign formular
+			//bur.signForm(scForm);
 
+			// Exceptioin no-execution
+			//bur.executeForm(scForm);
 
+			bur.setGrade(10);
+			bur.signForm(scForm);
+			bur.executeForm(scForm);
+		}
+		catch (const Bureaucrat::NoSignException &e)
+		{
+			std::cout << RED << bur << " couldn’t sign " << scForm << " because " << e.what() << WHITE << std::endl;
+		}
+		catch (const Bureaucrat::NoExecutionSignException &e )
+		{
+			std::cout << RED << bur << " couldn’t execute " << scForm << " because " << e.what() << WHITE << std::endl;
+		}
+		catch (const Bureaucrat::NoExecutionGradeLowException &e)
+		{
+			std::cout << RED << bur << " couldn’t execute " << scForm << " because " << e.what() << WHITE << std::endl;
+		}
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-	
-	// std::cout << GREEN << std::endl << "1). Test ShrubberyCreationForm Sign-grade: 145 Execute-grade: 137" << WHITE << std::endl;
-	// try
-	// {
-	// 	Bureaucrat bure("Administrator-bery", 100); //name, grade
-	// 	ShrubberyCreationForm scf("form-bery"); // target-name
-	// 	std::cout << scf << std::endl;
-	// 	bure.setGrade(145); //To sign the form.
-	// 	bure.signForm(scf);
-	// 	scf.execute(bure); // Check new file with trees.
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-
-
-	// std::cout << GREEN << std::endl << "2). Test RobotomyRequestForm" << WHITE << std::endl;
-	// RobotomyRequestForm rrf("Robot", 10, 150);
-	
-	// Bureaucrat brrf("Andministrator2", 50);
-	// brrf.setGrade(5);
-	// brrf.signForm(rrf);
-	// rrf.execute(brrf);
-
-	 
-
-
 	return 0;
 }

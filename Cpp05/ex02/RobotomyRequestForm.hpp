@@ -4,6 +4,9 @@
 #include <string>
 #include <fstream>
 
+// Remove for eval
+  #include <stdlib.h>
+
 #include "AForm.hpp"
 
 /****

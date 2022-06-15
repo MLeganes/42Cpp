@@ -3,8 +3,14 @@
 
 #include <string>
 #include <iostream>
-
 #include "AForm.hpp"
+
+#include <stdlib.h>
+
+# define GREEN	"\033[1;32m"
+# define WHITE	"\033[0;37m"
+# define RED	"\033[31m"
+
 
 /* Error:
  * Bureaucrat.hpp:30:19: error: ‘Form’ has not been declared
@@ -31,15 +37,13 @@ public:
 
 	void				setName(std::string &name);
 	void				setGrade(int grade);
-	const std::string	&getName() const; //
-	int					getGrade() const;//
+	const std::string	&getName() const;
+	int					getGrade() const;
 
 	void				increaseGrade();
 	void				decreaseGrade();
 	void				signForm(AForm &form);
 	void				executeForm(const AForm &);
-
-
 
 	// Exception class Declaration. NO Orthodox Canonical Form.
 	class GradeTooHighException : public std::exception
@@ -50,6 +54,27 @@ public:
 	
 	// Exception class Declaration. NO Orthodox Canonical Form.
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+
+	// Exception class Declaration. NO Orthodox Canonical Form.
+	class NoSignException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+	
+	// Exception class Declaration. NO Orthodox Canonical Form.
+	class NoExecutionSignException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+
+	// Exception class Declaration. NO Orthodox Canonical Form.
+	class NoExecutionGradeLowException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();

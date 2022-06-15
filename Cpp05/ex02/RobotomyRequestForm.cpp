@@ -50,7 +50,8 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 	std::cout << "drilling..." << std::endl;
 	std::cout << "End drilling!" <<  WHITE << std::endl;
 	
-	if (arc4random() % 2 == 1)
+	//if (arc4random() % 2 == 1)
+	if (random() % 2 == 1)
 		std::cout << this->_target <<  " has been robotomized successfully!" << std::endl;
 	else
 		std::cout << this->_target <<  " attempt to robotomize failed!" << std::endl;

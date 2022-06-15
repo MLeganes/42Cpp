@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/14 14:34:38 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/15 02:39:59 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	bureaucrat
+NAME	=	bureaucrat02
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
@@ -18,8 +18,8 @@ OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
-			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp \
 
 all:		$(NAME)
 # Linking
