@@ -7,6 +7,7 @@
 #define GREEN "\033[1;32m"
 #define WHITE "\033[0;37m"
 #define RED "\033[31m"
+#define MAXNBR 3
 
 int main()
 {
@@ -16,19 +17,17 @@ int main()
 	{
 		Bureaucrat bs[4] = {
 			Bureaucrat("Presi", 1),
-			Bureaucrat("Vice", 30),
 			Bureaucrat("Robot", 50),
 			Bureaucrat("Shrubbery", 150)};
 		Intern intern;
 		AForm *fs[4] = {
-			intern.makeForm("RobotomyRequestForm", "my car"),
-			intern.makeForm("PresidentialPardonForm", "himself"),
-			intern.makeForm("NotExistingForm", "intern"),
-			intern.makeForm("ShrubberyCreationForm", "church's garden")};
+			intern.makeForm("RobotomyRequestForm", "Robot"),
+			intern.makeForm("PresidentialPardonForm", "Presi"),
+			intern.makeForm("ShrubberyCreationForm", "Shrubbery")};
 
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < MAXNBR; ++i)
 		{
-			for (int j = 0; j < 4; ++j)
+			for (int j = 0; j < MAXNBR; ++j)
 			{
 				if (fs[j] != 0L)
 				{
@@ -50,9 +49,9 @@ int main()
 				}
 			}
 		}
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < MAXNBR; ++i)
 		{
-			for (int j = 0; j < 4; ++j)
+			for (int j = 0; j < MAXNBR; ++j)
 			{
 				if (fs[j] != 0L)
 				{
