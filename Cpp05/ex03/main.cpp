@@ -73,6 +73,10 @@ int main()
 				}
 			}
 		}
+	delete fs[0];
+	delete fs[1];
+	delete fs[2];
+	delete fs[3];
 	}
 	catch (const std::exception &e)
 	{
