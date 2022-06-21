@@ -5,16 +5,18 @@
 #include <iostream>
 #include <stdlib.h>
 
-// To delete
-#include <stdexcept>
-
-enum Type {CHAR, INT, FLOAT, DOUBLE, NOTYPE} ;
+enum Type {CHAR, INT, FLOAT, DOUBLE, NOTYPE, TYPE_NAN, TYPE_PINF, TYPE_NINF} ;
 
 class Converter
 {
 private:
-	const std::string _input;
-	
+	const std::string	_input;
+	Type				_type;
+	char				_char;
+	int					_int;
+	float				_float;
+	double				_double;
+
 public:
 	Converter();
 	Converter(const Converter &);
@@ -23,13 +25,19 @@ public:
 
 	Converter &operator=(const Converter &);
 
-	Type	getType();
+	Type	getType() const;
+	char 	getChar() const;
+	int 	getInt() const;
+	float	getFloat() const;
+	double	getDouble() const;
+
+	void 	searchType();
 	char	convertToChar();
 	int		convertToInt();
 	float	convertToFloat();
 	double	convertToDouble();
 	void	printConvertion();
-	
+	void	printNanInf();
 };
 
 #endif

@@ -50,3 +50,10 @@ Try-Catch and Exceptions
 -	ex02 Abstract class.
 -	ex03 
 
+## Cpp06
+C++ casting
+
+-	ex00 Conversion of scalar types. Convert from a string to an int, a float or a double
+-	ex01 Serialization
+-	ex02 Identify real type
+

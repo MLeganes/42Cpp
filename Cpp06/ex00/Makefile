@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/20 20:46:40 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/21 21:23:26 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	converter
+NAME	=	convert
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
