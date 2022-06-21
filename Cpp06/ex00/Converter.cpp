@@ -24,25 +24,26 @@ Converter &Converter::operator=(const Converter &)
 
 Type	Converter::getType()
 {
-	if (this->_input.length() == 0)
-		throw invalid_argument("No argumen valid");
+	return CHAR;
 }
 
-char	Converter::convertToChar(const std::string &)
+
+
+char	Converter::convertToChar()
 {
-return '\0';
+	return (this->_input[0]);
 }
-int		Converter::convertToInt(const std::string &)
+int		Converter::convertToInt()
 {
-	return 0;
+	return static_cast<int>(strtof((this->_input).c_str(), 0L));
 }
-float	Converter::convertToFloat(const std::string &)
+float	Converter::convertToFloat()
 {
-	return 0.0;
+	return strtof((this->_input).c_str(), 0L);
 }
-double	Converter::convertToDouble(const std::string &)
+double	Converter::convertToDouble()
 {
-	return 0.0;
+	return strtod((this->_input).c_str(), 0L);
 }
 
 

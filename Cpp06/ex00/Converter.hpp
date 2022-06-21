@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include <stdlib.h>
+
+// To delete
 #include <stdexcept>
 
 enum Type {CHAR, INT, FLOAT, DOUBLE} ;
@@ -21,10 +24,10 @@ public:
 	Converter &operator=(const Converter &);
 
 	Type	getType();
-	char	convertToChar(const std::string &);
-	int		convertToInt(const std::string &);
-	float	convertToFloat(const std::string &);
-	double	convertToDouble(const std::string &);
+	char	convertToChar();
+	int		convertToInt();
+	float	convertToFloat();
+	double	convertToDouble();
 
 	class ConverterTypeException : public std::exception
 	{

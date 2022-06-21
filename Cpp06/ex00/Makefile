@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/20 13:55:52 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/20 20:46:40 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 OBJS	= 	$(patsubst %.c, %.o, $(SRCS))
 SRCS	=	main.cpp \
-			converter.cpp \
+			Converter.cpp \
 
 all:		$(NAME)
 # Linking

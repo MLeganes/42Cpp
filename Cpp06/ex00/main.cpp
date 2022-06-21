@@ -18,7 +18,23 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "input parameter: " << argv[1] << std::endl;
 	
-//	Converter cvt(argv[1]);
+	Converter cvt(argv[1]);
+
+
+try
+{
+	/* code */
+	std::cout << "char: " << cvt.convertToChar() << std::endl;
+
+	std::cout << "int: " << cvt.convertToInt() << std::endl;
+	std::cout << "float: " << cvt.convertToFloat() << std::endl;
+	std::cout << "double: " << cvt.convertToDouble() << std::endl;
+
+}
+catch(const std::exception& e)
+{
+	std::cerr << e.what() << '\n';
+}
 
 
 	return 0;
