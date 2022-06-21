@@ -24,10 +24,14 @@ Converter &Converter::operator=(const Converter &)
 
 Type	Converter::getType()
 {
-	return CHAR;
-}
-
-
+	if (this->_input.length() == 0)
+		return NOTYPE;
+	// int
+	char *end;
+	unsigned int res = strto
+	// float
+	// double
+}	
 
 char	Converter::convertToChar()
 {
@@ -46,4 +50,12 @@ double	Converter::convertToDouble()
 	return strtod((this->_input).c_str(), 0L);
 }
 
+void	Converter::printConvertion()
+{
+	//get type
+
+	//switch and print every case
+
+
+}
 

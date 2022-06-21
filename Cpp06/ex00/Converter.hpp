@@ -8,7 +8,7 @@
 // To delete
 #include <stdexcept>
 
-enum Type {CHAR, INT, FLOAT, DOUBLE} ;
+enum Type {CHAR, INT, FLOAT, DOUBLE, NOTYPE} ;
 
 class Converter
 {
@@ -28,33 +28,7 @@ public:
 	int		convertToInt();
 	float	convertToFloat();
 	double	convertToDouble();
-
-	class ConverterTypeException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
-	
-	class ConverterCharException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
-	class ConverterIntException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
-	class ConverterFloatxception : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
-	class ConverterDoubleException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
+	void	printConvertion();
 	
 };
 
