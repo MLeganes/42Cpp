@@ -33,104 +33,80 @@ int 	Converter::getInt() const{return this->_int;}
 float	Converter::getFloat() const{return this->_float;}
 double	Converter::getDouble() const{return this->_double;}
 
+
 void	Converter::searchType()
 {
 	std::cout << "Converter-searchType member function called " << std::endl;
 
-
-	/*
-	 *	Search special case for nan, +/-inf
-	 */
-	if ((this->_input.compare("-inff") == 0) || (this->_input.compare("-inf") == 0))
-	{
-		this->_type = TYPE_NINF;
-		// std::cout << std::endl << " Type:  " << this->_type << std::endl;
+	if (this->checkNanInf())
 		this->printNanInf();
-		return ;
-	}
-	if ((this->_input.compare("+inff") == 0) || (this->_input.compare("+inf") == 0))
-	{
-		this->_type = TYPE_PINF;
-		// std::cout << std::endl << " Type:  " << this->_type << std::endl;
-		this->printNanInf();
-		return ;
-	}
-	if ((this->_input.compare("nanf") == 0) || (this->_input.compare("nan") == 0))
-	{
-		this->_type = TYPE_NAN;
-		// std::cout << std::endl << " Type:  " << this->_type << std::endl;
-		this->printNanInf();
-		return ;
-	}
-	
-
-	/*
-	 * Integer
-	 */
-	//isdigit
-
-	
-	// char *end;
-	// long res = strtol(this->_input.c_str(), &end, 10);
-	// //std::cout << " This is res: " <<  res << std::endl;
-	// if (errno == ERANGE)
-	// {
-	// 	std::cout << " Error: erange " << res << std::endl;
-	// 	//return NOTYPE;
-	// }
-
-	// if (res > INT_MAX || res < INT_MIN)
-	// {
-	// 	std::cout << " This is NOT an INT " << res << std::endl;
-	// }
-	// else
-	// {
-	// 	std::cout << " This is INT " << res << std::endl;
-	// 	_int = res;
-	// }
+	else if (checkInt())
+		convertToInt();
+	// else if (this->checkFloat())
+	// 	this->printFloat();
+	// else if (this->checkDouble())
+	// 	this->printDouble();
 
 	/*
 	 * Float
 	 */
-	end = nullptr;
-	float resFloat = strtof(this->_input.c_str(), &end);
-	if (errno == ERANGE)
-		std::cout << " Error: erange in float" << resFloat << std::endl;
-	else
-		std::cout << " This is float " << res << std::endl;
+	// end = nullptr;
+	// float resFloat = strtof(this->_input.c_str(), &end);
+	// if (errno == ERANGE)
+	// 	std::cout << " Error: erange in float" << resFloat << std::endl;
+	// else
+	// 	std::cout << " This is float " << res << std::endl;
 
-	/*
-	 * Double
-	 */
-	double resDouble;
-	try
-	{
-		resDouble = strtod(this->_input.c_str(), &end);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << " Error: erange in double " << resDouble << e.what() << '\n';
-	}
+	// /*
+	//  * Double
+	//  */
+	// double resDouble;
+	// try
+	// {
+	// 	resDouble = strtod(this->_input.c_str(), &end);
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << " Error: erange in double " << resDouble << e.what() << '\n';
+	// }
 }
 
-static bool checkInt(std::string input)
+bool	Converter::checkInt()
 {
-	// sign
+	int i = 0;
+	int sign = 1;
+	int len = static_cast<int> (this->_input.length());
 
-	// everythin is digits
-	int len = input.length();
-	for(int i = 0; i < len; i++)
+	if (_input[i] == '-')
 	{
-		if (!isdigit(input[i]))
+		i++;
+		sign = -1;
+	}
+	for(; i < len; i++)
+	{
+		if (!isdigit(this->_input[i]))
 			return false;
 	}
-	
-	// get int 
-	int resInt = atoi(input.c_str());
-	// max and min
-	//if (resInt < int_ma)
 
-
+	unsigned int i_dec;
+	if (sign == -1)
+	{
+		const char *i_ptr = &this->_input[1];
+		i_dec = atoi(i_ptr);
+	}
+	else
+	{
+		const char *i_ptr = &this->_input[0];
+		i_dec = atoi(i_ptr);
+	}
+	// 2147483647,	-2147483648
+	if ((sign == -1 && i_dec > 2147483648) || (sign == 1 && i_dec > 2147483647))
+	{
+		// std::cout << "atoi result: " <<  i_dec << "INT OUT OF RANGE " << std::endl;
+		return false;
+	}
+	// std::cout << "atoi result: " <<  i_dec << std::endl;
+	return true;
 }
 
 
@@ -138,9 +114,19 @@ char	Converter::convertToChar()
 {
 	return (this->_input[0]);
 }
-int		Converter::convertToInt()
+void	Converter::convertToInt()
 {
-	return static_cast<int>(strtof((this->_input).c_str(), 0L));
+	const char *i_ptr = &this->_input[0];
+	int i_dec = atoi(i_ptr);
+
+	char c = static_cast<char>(i_dec);
+	if (isprint(c))
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << i_dec << std::endl;
+	std::cout << "float: " << static_cast<float>(i_dec) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(i_dec) << ".0" << std::endl;
 }
 float	Converter::convertToFloat()
 {
@@ -158,33 +144,40 @@ void	Converter::printConvertion()
 
 
 }
-
-void Converter::printNanInf()
+bool	Converter::checkNanInf()
 {
-
-	// 	 amorcill@1-B-4 ex00 % ./convert nanf 
-	//	 error: not convertable
-
-	if (this->_type == TYPE_NINF)
+	if ((this->_input == "+inff") || (this->_input == "-inff") || (this->_input == "nanf")  ||
+		(this->_input == "+inf")  || (this->_input == "-inf")  || (this->_input == "nan"))
+		return true;
+	return false;
+}
+void	Converter::printNanInf()
+{
+	if (this->_input == "-inf" || this->_input == "-inff")
 	{
 		std::cout << "char: impossible " << std::endl;
 		std::cout << "int: impossible " << std::endl;
 		std::cout << "float: -inff " << std::endl;
 		std::cout << "double: -inf " << std::endl;
 	}
-	if (this->_type == TYPE_PINF)
+	if (this->_input == "+inf" || this->_input == "+inff")
 	{
 		std::cout << "char: impossible " << std::endl;
 		std::cout << "int: impossible " << std::endl;
 		std::cout << "float: +inff " << std::endl;
 		std::cout << "double: +inf " << std::endl;
 	}
-	if (this->_type == TYPE_NAN)
+	if (this->_input == "nan")
 	{
 		std::cout << "char: impossible " << std::endl;
 		std::cout << "int: impossible " << std::endl;
 		std::cout << "float: nanf " << std::endl;
 		std::cout << "double: nan " << std::endl;
 	}
+	if (this->_input == "nanf")
+	{
+		std::cout << "error: impossible convertion" << std::endl;
+	}
 }
+
 

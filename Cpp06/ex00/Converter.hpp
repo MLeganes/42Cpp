@@ -31,14 +31,23 @@ public:
 	float	getFloat() const;
 	double	getDouble() const;
 
-	void 	searchType();
+
+
 	char	convertToChar();
-	int		convertToInt();
+	void	convertToInt();
 	float	convertToFloat();
 	double	convertToDouble();
 
 	void	printConvertion();
+
+	void	searchType();
+
+	bool	checkNanInf();
 	void	printNanInf();
+
+	bool	checkInt();
+	void	printInt();
+	//bool	checkMinus();
 };
 
 #endif

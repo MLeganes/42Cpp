@@ -11,16 +11,12 @@
 int main(int argc, char *argv[])
 {
 	
-	if (argc != 2)
+	if ((argc != 2) || (argc == 2 && argv[1] && strlen(argv[1]) == 0))
 	{
 		std::cout << "error: 1 argument input needed for conversion, char, int, float or double. Example: ./converter 42" << std::endl;
 		return 1;
 	}
-	if (argc == 2 && argv[1] && (argv[1]).lenght() == 0)
-	{
-		std::cout << "error: 1 argument input needed for conversion, char, int, float or double. Example: ./converter 42" << std::endl;
-		return 1;
-	}
+
 	//std::cout << "input parameter: " << argv[1] << std::endl;
 	Converter cvt(argv[1]);
 
