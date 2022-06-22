@@ -36,6 +36,7 @@ public:
 	int		convertToInt();
 	float	convertToFloat();
 	double	convertToDouble();
+
 	void	printConvertion();
 	void	printNanInf();
 };

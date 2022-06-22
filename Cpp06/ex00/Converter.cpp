@@ -36,12 +36,11 @@ double	Converter::getDouble() const{return this->_double;}
 void	Converter::searchType()
 {
 	std::cout << "Converter-searchType member function called " << std::endl;
-	if (this->_input.length() == 0)
-	{
-		std::cout << " This is NO-TYPE" << std::endl;
-		this->_type = NOTYPE;
-	}
 
+
+	/*
+	 *	Search special case for nan, +/-inf
+	 */
 	if ((this->_input.compare("-inff") == 0) || (this->_input.compare("-inf") == 0))
 	{
 		this->_type = TYPE_NINF;
@@ -68,24 +67,27 @@ void	Converter::searchType()
 	/*
 	 * Integer
 	 */
-	char *end;
-	long res = strtol(this->_input.c_str(), &end, 10);
-	//std::cout << " This is res: " <<  res << std::endl;
-	if (errno == ERANGE)
-	{
-		std::cout << " Error: erange " << res << std::endl;
-		//return NOTYPE;
-	}
+	//isdigit
 
-	if (res > INT_MAX || res < INT_MIN)
-	{
-		std::cout << " This is NOT an INT " << res << std::endl;
-	}
-	else
-	{
-		std::cout << " This is INT " << res << std::endl;
-		_int = res;
-	}
+	
+	// char *end;
+	// long res = strtol(this->_input.c_str(), &end, 10);
+	// //std::cout << " This is res: " <<  res << std::endl;
+	// if (errno == ERANGE)
+	// {
+	// 	std::cout << " Error: erange " << res << std::endl;
+	// 	//return NOTYPE;
+	// }
+
+	// if (res > INT_MAX || res < INT_MIN)
+	// {
+	// 	std::cout << " This is NOT an INT " << res << std::endl;
+	// }
+	// else
+	// {
+	// 	std::cout << " This is INT " << res << std::endl;
+	// 	_int = res;
+	// }
 
 	/*
 	 * Float
@@ -109,7 +111,29 @@ void	Converter::searchType()
 	{
 		std::cerr << " Error: erange in double " << resDouble << e.what() << '\n';
 	}
-}	
+}
+
+static bool checkInt(std::string input)
+{
+	// sign
+
+	// everythin is digits
+	int len = input.length();
+	for(int i = 0; i < len; i++)
+	{
+		if (!isdigit(input[i]))
+			return false;
+	}
+	
+	// get int 
+	int resInt = atoi(input.c_str());
+	// max and min
+	//if (resInt < int_ma)
+
+
+}
+
+
 char	Converter::convertToChar()
 {
 	return (this->_input[0]);
@@ -138,8 +162,8 @@ void	Converter::printConvertion()
 void Converter::printNanInf()
 {
 
-// 	 amorcill@1-B-4 ex00 % ./convert nanf 
-//	 error: not convertable
+	// 	 amorcill@1-B-4 ex00 % ./convert nanf 
+	//	 error: not convertable
 
 	if (this->_type == TYPE_NINF)
 	{
