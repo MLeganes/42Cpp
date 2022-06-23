@@ -108,20 +108,24 @@ bool	Converter::checkInt()
 	// std::cout << "atoi result: " <<  i_dec << std::endl;
 	return true;
 }
-
-/*
-
-
-*/
-
 bool	Converter::checkFloat()
 {
-	if (this->_input.find_first_of("f") != this->_input.find_last_of("f") ||		// catches `0.0ff`
-		this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0f`
-		this->_input.find_first_of("f") - this->_input.find_first_of(".") == 1 ||	//catches `0.f`
-		this->_input.find_first_of(".") == 0 ||										// catches `.0f`
-		this->_input[this->_input.find_first_of("f") + 1] != '\0')					// catches `0.0f0`
-		return false;
+		if (this->_input.find_first_of("f") != this->_input.find_last_of("f") || // catches `0.0ff`
+			this->_input.find_first_of(".") != this->_input.find_last_of(".") || // catches `0..0f`
+			this->_input.find_first_of("f") - this->_input.find_first_of(".") == 1 || //catches `0.f`
+			this->_input.find_first_of(".") == 0 || // catches `.0f`
+			this->_input[this->_input.find_first_of("f") + 1] != '\0') // catches `0.0f0`
+			return false;
+		}
+
+	// if( (_input.length() > 2) && ( _input.find('f') + 1 == _input.length()) && ( _input.find('.') <= _input.length()) )
+	// {
+	// 	// std::cout << " ****** FLOAT len >2 " << std::endl;
+	// 	// std::cout << " ****** FLOAT contain f " << std::endl;
+	// 	// std::cout << " ****** FLOAT wiht '.'" << std::endl;
+	// 	return true;
+	// }
+	float f = 0.f;
 	return true;
 }
 
@@ -180,16 +184,16 @@ void	Converter::convertToInt()
 void	Converter::convertToFloat()
 {
 	std::cout << " **** convert To FLOAT " << std::endl;
-	char c = static_cast<char>(this->_input);
-	if (isprint(c))
-		std::cout << "char: '" << c << "'" << std::endl;
-	else
-		std::cout << "char: Non displayable" << std::endl;
-	
-	float f = static_cast<float>(this->_input.c_str());
-	std::cout << "int: " << static_cast<int>(f) << std::endl;
+
+
+	std::cout << "char: Non displayable" << std::endl;
+	//std::cout << "int: " << static_cast<int>(_arg) << std::endl;
 	std::cout << "float: " << this->_input << std::endl;
 	// std::cout << "double: " << static_cast<double>(_arg) << ".0" << std::endl;
+	(void)_arg;
+
+
+
 
 }
 void	Converter::convertToDouble()
