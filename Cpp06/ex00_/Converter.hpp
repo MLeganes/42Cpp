@@ -3,7 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include <stdlib.h>
+
+# include <iomanip>	//std::fixed and precission
 
 # define GREEN	"\033[1;32m"
 # define WHITE	"\033[0;37m"
@@ -20,6 +21,7 @@ private:
 	int					_int;
 	float				_float;
 	double				_double;
+	bool				_errChar;
 	bool				_errInt;
 	bool				_errFloat;
 	bool				_errDoube;
@@ -44,6 +46,7 @@ public:
 	bool	checkChar();
 	bool	checkInt();
 	bool	checkFloat();
+	bool	checkDouble();
 
 	void	printNanInf();
 	void	convertToChar();

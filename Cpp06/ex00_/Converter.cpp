@@ -43,8 +43,8 @@ void	Converter::searchType()
 		convertToInt();
 	else if (this->checkFloat())
 		convertToFloat();
-	// else if (this->checkDouble())
-	// 	this->printDouble();
+	else if (this->checkDouble())
+		this->convertToDouble();
 	else
 		printImpossible();
 	//throw std::overflow_error("error: the type conversion is impossible.");
@@ -131,6 +131,40 @@ bool	Converter::checkFloat()
 	return true;
 }
 
+bool Converter::checkDouble()
+{
+	int i = 0;
+	int sign = 1;
+	int len = static_cast<int> (this->_input.length());
+
+	if (_input[i] == '-')
+	{
+		i++;
+		sign = -1;
+	}
+	for(; i < len; i++)
+	{
+		if (!(isdigit(this->_input[i]) || this->_input[i] == '.'))
+		{
+			return false;
+		}
+	}
+
+	if (this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0`
+		(this->_input.find_last_of(".") - (std::strlen(this->_input.c_str()) - 1)  == 0 ) )	//catches `0.`
+		
+		//this->_input.find_first_of(".") == 0 )										// catches `.0`
+		return false;
+
+	char *end;
+	std::strtod(this->_input.c_str(), &end);
+	if (errno == ERANGE)
+	{
+		return false;
+	}
+	return true;
+}
+
 void	Converter::printNanInf()
 {
 	if (this->_input == "-inf" || this->_input == "-inff")
@@ -174,83 +208,143 @@ void	Converter::convertToInt()
 	const char *i_ptr = &this->_input[0];
 	int i_dec = atoi(i_ptr);
 
+	// PRINTING PART
+	std::cout << std::fixed << std::setprecision(1);
 	char c = static_cast<char>(i_dec);
 	if (isprint(c))
 		std::cout << "char: '" << c << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << i_dec << std::endl;
-	std::cout << "float: " << static_cast<float>(i_dec) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(i_dec) << ".0" << std::endl;
+	std::cout << "float: " << static_cast<float>(i_dec) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(i_dec) << std::endl;
 }
 void	Converter::convertToFloat()
 {
+	_errChar = false;
 	_errInt = false;
 	_errFloat = false;
 	_errDoube = false;
-	// https://en.cppreference.com/w/cpp/string/byte/strtol
-	// Defined in header <cstdlib>
-	// long      strtol( const char *str, char **str_end, int base );
+	char c;
+	int i;
+
+	// CHECKING PART
 	char *end;
-	// std::cout << " **** FLOAT MAX: " << std::numeric_limits<float>::max() <<std::endl;
-	// std::cout << " **** FLOAT MIN: " << std::numeric_limits<float>::min() <<std::endl;
-
-	double d = std::strtod(this->_input.c_str(), &end);
+	float f =  static_cast<float>(std::strtod(this->_input.c_str(), &end));
 	if (errno == ERANGE)
 	{
-		//throw std::overflow_error("overflow error in parser to double");
-		_errDoube = true;
-	}
-	
-	// std::cout << " **** double: " << d <<std::endl;
-	float f = static_cast<float>(d);
-	// std::cout << " **** float: " << d <<std::endl;
-	if (errno == ERANGE)
-	{
-		//throw std::overflow_error("overflow error in parser to double");
+		_errInt = true;
 		_errFloat = true;
+		_errChar = true;
 	}
 
-	// if (static_cast<float>(d) > std::numeric_limits<float>::max() || static_cast<float>(d) < std::numeric_limits<float>::min())
-	// {
-	// 	std::cout << RED << " **** convert To FLOAT " << WHITE <<std::endl;
-	// 	throw std::overflow_error("error: the type conversion is impossible. Overflow error in parser to float");
-	// }
-
-
-	char c = static_cast<char>(f);
-	if (isprint(c) && !isdigit(c))
-		std::cout << "char: '" << c << "'" << std::endl;
+	// CHAR 
+	long intCheckL = static_cast<long>(f);
+	if (intCheckL > std::numeric_limits<char>::max() || intCheckL < std::numeric_limits<char>::min())
+	{	
+		_errChar = true;
+	}
 	else
+		c = static_cast<char>(f);
+
+	// INT
+	if (intCheckL > std::numeric_limits<int>::max() || intCheckL < std::numeric_limits<int>::min())
+	{	
+		_errInt = true;
+	}
+	else
+		i = static_cast<int>(f);
+
+	// PRINTING PART
+	std::cout << std::fixed << std::setprecision(1);
+	// CHAR
+	if ( _errChar == true)
+		std::cout << "char: impossible" << std::endl;
+	else if ( isprint(c) == false || isnumber(c) == true)
 		std::cout << "char: Non displayable" << std::endl;
-	
-	int i = static_cast<int>(f);
-	if (i >= -2147483648 || i <= 2147483647)
-		std::cout << "int: " << i << std::endl;
 	else
-		std::cout << "int: Non displayable" << std::endl;
-	if (_errFloat)
-		std::cout << "float: Non displayable" << std::endl;
+		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
+	// INT
+	if (_errInt == true)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+	// FLOAT
+	if (_errFloat == true)
+		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << this->_input << std::endl;
-	if (_errDoube)
-		std::cout << "double: Non displayable" << std::endl;
+	// DOUBLE
+	if (_errFloat)
+		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << d << std::endl;
-
+		std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
 void	Converter::convertToDouble()
 {
-	// https://en.cppreference.com/w/cpp/string/byte/strtof
-	// double      strtod( const char* str, char** str_end );
-	 strtod((this->_input).c_str(), 0L);
+	_errChar = false;
+	_errInt = false;
+	_errFloat = false;
+	_errDoube = false;
+	char c;
+	int i;
+
+	// CHECKING PART
+	char *end;
+	double d =  std::strtod(this->_input.c_str(), &end);
+	if (errno == ERANGE)
+	{
+		//throw std::overflow_error("overflow error in parser to double");
+		_errChar = true;
+		_errInt = true;
+		_errFloat = true;
+		_errDoube = true;
+	}
+
+	// CHAR 
+	long intCheckL = static_cast<long>(d);
+	if (intCheckL > std::numeric_limits<char>::max() || intCheckL < std::numeric_limits<char>::min())
+		_errChar = true;
+	else
+		c = static_cast<char>(d);
+
+	// INT
+	if (intCheckL > std::numeric_limits<int>::max() || intCheckL < std::numeric_limits<int>::min())
+		_errInt = true;
+	else
+		i = static_cast<int>(d);
+
+	// PRINTING PART
+	std::cout << std::fixed << std::setprecision(1);
+	// CHAR
+	if ( _errChar == true)
+		std::cout << "char: impossible" << std::endl;
+	else if ( isprint(c) == false || isnumber(c) == true)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
+	// INT
+	if (_errInt == true)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+	// FLOAT
+	if (_errFloat == true)
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+	// DOUBLE
+	if (_errFloat)
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << this->_input << std::endl;
 }
 
 
 void Converter::printImpossible()
 {
-	std::cout << "char: impossible, invalid type" << std::endl;
-	std::cout << "int: impossible, invalid type " << std::endl;
-	std::cout << "float: impossible, invalid type " << std::endl;
-	std::cout << "double: impossible, invalid type " << std::endl;
+	std::cout << "char: invalid type" << std::endl;
+	std::cout << "int: invalid type " << std::endl;
+	std::cout << "float: invalid type " << std::endl;
+	std::cout << "double: invalid type " << std::endl;
 }
