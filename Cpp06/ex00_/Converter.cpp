@@ -4,24 +4,13 @@
 #include <stdlib.h>
 
 
-Converter::Converter() : _input("null")
-{
-}
-Converter::Converter(const Converter &) : _input("null")
-{
-	
-}
-// Converter::Converter(const std::string &str) : _input(str), _arg(str)
-// {
-// 	this->searchType();
-// }
-Converter::Converter(char *arg) : _input(arg), _arg(arg)
+Converter::Converter() : _input("null"){}
+Converter::Converter(const Converter &) : _input("null"){}
+Converter::Converter(const std::string input) : _input(input)
 {
 	this->searchType();
 }
-Converter::~Converter()
-{
-}
+Converter::~Converter(){}
 
 Converter &Converter::operator=(const Converter &copy)
 {
@@ -44,18 +33,22 @@ double	Converter::getDouble() const{return this->_double;}
 
 void	Converter::searchType()
 {
-	std::cout << "Converter-searchType member function called " << std::endl;
+	// std::cout << "Converter-searchType member function called " << std::endl;
 
 	if (this->checkNanInf())
-		this->printNanInf();
+		printNanInf();
 	else if (checkChar())
 		convertToChar();
 	else if (checkInt())
 		convertToInt();
 	else if (this->checkFloat())
-		this->convertToFloat();
+		convertToFloat();
 	// else if (this->checkDouble())
 	// 	this->printDouble();
+	else
+		printImpossible();
+	//throw std::overflow_error("error: the type conversion is impossible.");
+
 }
 
 bool	Converter::checkNanInf()
@@ -109,13 +102,26 @@ bool	Converter::checkInt()
 	return true;
 }
 
-/*
-
-
-*/
-
 bool	Converter::checkFloat()
 {
+	int i = 0;
+	int sign = 1;
+	int len = static_cast<int> (this->_input.length());
+
+	if (_input[i] == '-')
+	{
+		i++;
+		sign = -1;
+	}
+	for(; i < len; i++)
+	{
+		//if (!isdigit(this->_input[i]) && this->_input[i] == '.' && this->_input[i] == 'f')
+		if (!(isdigit(this->_input[i]) || this->_input[i] == '.' || this->_input[i] == 'f'))
+		{
+			return false;
+		}
+	}
+
 	if (this->_input.find_first_of("f") != this->_input.find_last_of("f") ||		// catches `0.0ff`
 		this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0f`
 		this->_input.find_first_of("f") - this->_input.find_first_of(".") == 1 ||	//catches `0.f`
@@ -179,24 +185,72 @@ void	Converter::convertToInt()
 }
 void	Converter::convertToFloat()
 {
-	std::cout << " **** convert To FLOAT " << std::endl;
-	char c = static_cast<char>(this->_input);
-	if (isprint(c))
+	_errInt = false;
+	_errFloat = false;
+	_errDoube = false;
+	// https://en.cppreference.com/w/cpp/string/byte/strtol
+	// Defined in header <cstdlib>
+	// long      strtol( const char *str, char **str_end, int base );
+	char *end;
+	// std::cout << " **** FLOAT MAX: " << std::numeric_limits<float>::max() <<std::endl;
+	// std::cout << " **** FLOAT MIN: " << std::numeric_limits<float>::min() <<std::endl;
+
+	double d = std::strtod(this->_input.c_str(), &end);
+	if (errno == ERANGE)
+	{
+		//throw std::overflow_error("overflow error in parser to double");
+		_errDoube = true;
+	}
+	
+	// std::cout << " **** double: " << d <<std::endl;
+	float f = static_cast<float>(d);
+	// std::cout << " **** float: " << d <<std::endl;
+	if (errno == ERANGE)
+	{
+		//throw std::overflow_error("overflow error in parser to double");
+		_errFloat = true;
+	}
+
+	// if (static_cast<float>(d) > std::numeric_limits<float>::max() || static_cast<float>(d) < std::numeric_limits<float>::min())
+	// {
+	// 	std::cout << RED << " **** convert To FLOAT " << WHITE <<std::endl;
+	// 	throw std::overflow_error("error: the type conversion is impossible. Overflow error in parser to float");
+	// }
+
+
+	char c = static_cast<char>(f);
+	if (isprint(c) && !isdigit(c))
 		std::cout << "char: '" << c << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	
-	float f = static_cast<float>(this->_input.c_str());
-	std::cout << "int: " << static_cast<int>(f) << std::endl;
-	std::cout << "float: " << this->_input << std::endl;
-	// std::cout << "double: " << static_cast<double>(_arg) << ".0" << std::endl;
+	int i = static_cast<int>(f);
+	if (i >= -2147483648 || i <= 2147483647)
+		std::cout << "int: " << i << std::endl;
+	else
+		std::cout << "int: Non displayable" << std::endl;
+	if (_errFloat)
+		std::cout << "float: Non displayable" << std::endl;
+	else
+		std::cout << "float: " << this->_input << std::endl;
+	if (_errDoube)
+		std::cout << "double: Non displayable" << std::endl;
+	else
+		std::cout << "double: " << d << std::endl;
 
 }
 void	Converter::convertToDouble()
 {
+	// https://en.cppreference.com/w/cpp/string/byte/strtof
+	// double      strtod( const char* str, char** str_end );
 	 strtod((this->_input).c_str(), 0L);
 }
 
 
-
-
+void Converter::printImpossible()
+{
+	std::cout << "char: impossible, invalid type" << std::endl;
+	std::cout << "int: impossible, invalid type " << std::endl;
+	std::cout << "float: impossible, invalid type " << std::endl;
+	std::cout << "double: impossible, invalid type " << std::endl;
+}

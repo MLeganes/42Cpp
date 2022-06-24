@@ -25,8 +25,9 @@ int main(int argc, char *argv[])
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "error: exception hahahaha!!!" << std::endl;
+		std::cout << RED;
 		std::cerr << e.what() << '\n';
+		std::cout << WHITE;
 	}
 	
 
