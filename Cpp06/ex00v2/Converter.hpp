@@ -16,6 +16,11 @@ class Converter
 {
 private:
 	const std::string	_input;
+	Type				_type;
+	char				_char;
+	int					_int;
+	float				_float;
+	double				_double;
 	bool				_errChar;
 	bool				_errInt;
 	bool				_errFloat;
@@ -28,7 +33,12 @@ public:
 	~Converter();
 
 	Converter &operator=(const Converter &);
-	std::string getInput() const;
+
+	Type	getType() const;
+	char 	getChar() const;
+	int 	getInt() const;
+	float	getFloat() const;
+	double	getDouble() const;
 
 	void	searchType();
 

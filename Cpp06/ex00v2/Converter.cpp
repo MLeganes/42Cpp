@@ -12,21 +12,29 @@ Converter::Converter(const std::string input) : _input(input)
 }
 Converter::~Converter(){}
 
-Converter &Converter::operator=(const Converter &copy) 
+Converter &Converter::operator=(const Converter &copy)
 {
 	if (this == &copy)
 		return (*this);
-
+	this->_type = copy.getType();
+	this->_char = copy.getChar();
+	this->_int = copy.getInt();
+	this->_float = copy.getFloat();
+	this->_double = copy.getDouble();
 	return (*this);
 }
 
-std::string Converter::getInput()const 
-{
-	return (this->_input);
-}
+Type	Converter::getType() const{return this->_type;}
+char 	Converter::getChar() const{return this->_char;}
+int 	Converter::getInt() const{return this->_int;}
+float	Converter::getFloat() const{return this->_float;}
+double	Converter::getDouble() const{return this->_double;}
+
 
 void	Converter::searchType()
 {
+	// std::cout << "Converter-searchType member function called " << std::endl;
+
 	if (this->checkNanInf())
 		printNanInf();
 	else if (checkChar())
@@ -39,6 +47,8 @@ void	Converter::searchType()
 		this->convertToDouble();
 	else
 		printImpossible();
+	//throw std::overflow_error("error: the type conversion is impossible.");
+
 }
 
 bool	Converter::checkNanInf()
@@ -85,8 +95,10 @@ bool	Converter::checkInt()
 	// 2147483647,	-2147483648
 	if ((sign == -1 && i_dec > 2147483648) || (sign == 1 && i_dec > 2147483647))
 	{
+		// std::cout << "atoi result: " <<  i_dec << "INT OUT OF RANGE " << std::endl;
 		return false;
 	}
+	// std::cout << "atoi result: " <<  i_dec << std::endl;
 	return true;
 }
 
@@ -103,6 +115,7 @@ bool	Converter::checkFloat()
 	}
 	for(; i < len; i++)
 	{
+		//if (!isdigit(this->_input[i]) && this->_input[i] == '.' && this->_input[i] == 'f')
 		if (!(isdigit(this->_input[i]) || this->_input[i] == '.' || this->_input[i] == 'f'))
 		{
 			return false;
@@ -139,6 +152,8 @@ bool Converter::checkDouble()
 
 	if (this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0`
 		(this->_input.find_last_of(".") - (std::strlen(this->_input.c_str()) - 1)  == 0 ) )	//catches `0.`
+		
+		//this->_input.find_first_of(".") == 0 )										// catches `.0`
 		return false;
 
 	char *end;
@@ -279,6 +294,7 @@ void	Converter::convertToDouble()
 	double d =  std::strtod(this->_input.c_str(), &end);
 	if (errno == ERANGE)
 	{
+		//throw std::overflow_error("overflow error in parser to double");
 		_errChar = true;
 		_errInt = true;
 		_errFloat = true;
