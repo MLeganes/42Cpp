@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Converter.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/28 12:19:19 by amorcill          #+#    #+#             */
+/*   Updated: 2022/06/28 12:25:37 by amorcill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Converter.hpp"
-
-
 #include <stdlib.h>
-
 
 Converter::Converter() : _input("null"){}
 Converter::Converter(const Converter &) : _input("null"){}
@@ -181,7 +190,6 @@ void	Converter::printNanInf()
 void	Converter::convertToChar()
 {
 	char c = this->_input[0];
-	std::cout << " convert To CHAR " << std::endl;
 	std::cout << "char: '" << c << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
@@ -189,7 +197,6 @@ void	Converter::convertToChar()
 }
 void	Converter::convertToInt()
 {
-	std::cout << " convert To Int " << std::endl;
 	const char *i_ptr = &this->_input[0];
 	int i_dec = atoi(i_ptr);
 
