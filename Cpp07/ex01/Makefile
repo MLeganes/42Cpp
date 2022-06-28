@@ -6,11 +6,11 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/28 17:03:44 by amorcill         ###   ########.fr        #
+#    Updated: 2022/06/28 17:05:25 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	template
+NAME	=	iter
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 

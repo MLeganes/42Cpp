@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/01/05 11:49:03 by amorcill          #+#    #+#              #
-#    Updated: 2022/06/28 17:03:44 by amorcill         ###   ########.fr        #
+#    Created: 2022/06/28 18:47:43 by amorcill          #+#    #+#              #
+#    Updated: 2022/06/28 18:47:46 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	template
+NAME	=	array
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 
