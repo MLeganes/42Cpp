@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:19:47 by amorcill          #+#    #+#             */
-/*   Updated: 2022/06/28 12:19:54 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:31:26 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 #include "Converter.hpp"
 
-# define GREEN	"\033[1;32m"
-# define WHITE	"\033[0;37m"
-# define RED	"\033[31m"
+#define GREEN "\033[1;32m"
+#define WHITE "\033[0;37m"
+#define RED "\033[31m"
 
 int main(int argc, char *argv[])
 {
-	
+
 	if ((argc != 2) || (argc == 2 && argv[1] && strlen(argv[1]) == 0))
 	{
 		std::cout << "error: 1 argument input needed for conversion, char, int, float or double. Example: ./converter 42" << std::endl;
@@ -30,11 +30,11 @@ int main(int argc, char *argv[])
 
 	try
 	{
-		//std::cout << "input parameter: " << argv[1] << std::endl;
+		// std::cout << "input parameter: " << argv[1] << std::endl;
 		Converter cvt(argv[1]);
 		/* code */
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cout << RED;
 		std::cerr << e.what() << '\n';

@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:20:04 by amorcill          #+#    #+#             */
-/*   Updated: 2022/06/28 12:27:12 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:31:34 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int main()
 
 uintptr_t serialize(Data *ptr)
 {
-	//https://cplusplus.com/doc/tutorial/typecasting/
+	// https://cplusplus.com/doc/tutorial/typecasting/
 	return (reinterpret_cast<uintptr_t>(ptr));
 }
 

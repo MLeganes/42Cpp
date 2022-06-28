@@ -6,22 +6,22 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:19:19 by amorcill          #+#    #+#             */
-/*   Updated: 2022/06/28 12:25:37 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:30:39 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Converter.hpp"
 #include <stdlib.h>
 
-Converter::Converter() : _input("null"){}
-Converter::Converter(const Converter &) : _input("null"){}
+Converter::Converter() : _input("null") {}
+Converter::Converter(const Converter &) : _input("null") {}
 Converter::Converter(const std::string input) : _input(input)
 {
 	this->searchType();
 }
-Converter::~Converter(){}
+Converter::~Converter() {}
 
-Converter &Converter::operator=(const Converter &copy) 
+Converter &Converter::operator=(const Converter &copy)
 {
 	if (this == &copy)
 		return (*this);
@@ -29,12 +29,12 @@ Converter &Converter::operator=(const Converter &copy)
 	return (*this);
 }
 
-std::string Converter::getInput()const 
+std::string Converter::getInput() const
 {
 	return (this->_input);
 }
 
-void	Converter::searchType()
+void Converter::searchType()
 {
 	if (this->checkNanInf())
 		printNanInf();
@@ -50,31 +50,31 @@ void	Converter::searchType()
 		printImpossible();
 }
 
-bool	Converter::checkNanInf()
+bool Converter::checkNanInf()
 {
-	if ((this->_input == "+inff") || (this->_input == "-inff") || (this->_input == "nanf")  ||
-		(this->_input == "+inf")  || (this->_input == "-inf")  || (this->_input == "nan"))
+	if ((this->_input == "+inff") || (this->_input == "-inff") || (this->_input == "nanf") ||
+		(this->_input == "+inf") || (this->_input == "-inf") || (this->_input == "nan"))
 		return true;
 	return false;
 }
-bool	Converter::checkChar()
+bool Converter::checkChar()
 {
-	if ( this->_input.length() == 1 && !isdigit(this->_input[0]) && isprint(this->_input[0]))
+	if (this->_input.length() == 1 && !isdigit(this->_input[0]) && isprint(this->_input[0]))
 		return true;
 	return false;
 }
-bool	Converter::checkInt()
+bool Converter::checkInt()
 {
 	int i = 0;
 	int sign = 1;
-	int len = static_cast<int> (this->_input.length());
+	int len = static_cast<int>(this->_input.length());
 
 	if (_input[i] == '-')
 	{
 		i++;
 		sign = -1;
 	}
-	for(; i < len; i++)
+	for (; i < len; i++)
 	{
 		if (!isdigit(this->_input[i]))
 			return false;
@@ -99,18 +99,18 @@ bool	Converter::checkInt()
 	return true;
 }
 
-bool	Converter::checkFloat()
+bool Converter::checkFloat()
 {
 	int i = 0;
 	int sign = 1;
-	int len = static_cast<int> (this->_input.length());
+	int len = static_cast<int>(this->_input.length());
 
 	if (_input[i] == '-')
 	{
 		i++;
 		sign = -1;
 	}
-	for(; i < len; i++)
+	for (; i < len; i++)
 	{
 		if (!(isdigit(this->_input[i]) || this->_input[i] == '.' || this->_input[i] == 'f'))
 		{
@@ -118,11 +118,11 @@ bool	Converter::checkFloat()
 		}
 	}
 
-	if (this->_input.find_first_of("f") != this->_input.find_last_of("f") ||		// catches `0.0ff`
-		this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0f`
-		this->_input.find_first_of("f") - this->_input.find_first_of(".") == 1 ||	//catches `0.f`
-		this->_input.find_first_of(".") == 0 ||										// catches `.0f`
-		this->_input[this->_input.find_first_of("f") + 1] != '\0')					// catches `0.0f0`
+	if (this->_input.find_first_of("f") != this->_input.find_last_of("f") ||	  // catches `0.0ff`
+		this->_input.find_first_of(".") != this->_input.find_last_of(".") ||	  // catches `0..0f`
+		this->_input.find_first_of("f") - this->_input.find_first_of(".") == 1 || // catches `0.f`
+		this->_input.find_first_of(".") == 0 ||									  // catches `.0f`
+		this->_input[this->_input.find_first_of("f") + 1] != '\0')				  // catches `0.0f0`
 		return false;
 	return true;
 }
@@ -131,14 +131,14 @@ bool Converter::checkDouble()
 {
 	int i = 0;
 	int sign = 1;
-	int len = static_cast<int> (this->_input.length());
+	int len = static_cast<int>(this->_input.length());
 
 	if (_input[i] == '-')
 	{
 		i++;
 		sign = -1;
 	}
-	for(; i < len; i++)
+	for (; i < len; i++)
 	{
 		if (!(isdigit(this->_input[i]) || this->_input[i] == '.'))
 		{
@@ -146,8 +146,8 @@ bool Converter::checkDouble()
 		}
 	}
 
-	if (this->_input.find_first_of(".") != this->_input.find_last_of(".") ||		// catches `0..0`
-		(this->_input.find_last_of(".") - (std::strlen(this->_input.c_str()) - 1)  == 0 ) )	//catches `0.`
+	if (this->_input.find_first_of(".") != this->_input.find_last_of(".") ||			 // catches `0..0`
+		(this->_input.find_last_of(".") - (std::strlen(this->_input.c_str()) - 1) == 0)) // catches `0.`
 		return false;
 
 	char *end;
@@ -159,7 +159,7 @@ bool Converter::checkDouble()
 	return true;
 }
 
-void	Converter::printNanInf()
+void Converter::printNanInf()
 {
 	if (this->_input == "-inf" || this->_input == "-inff")
 	{
@@ -187,7 +187,7 @@ void	Converter::printNanInf()
 		std::cout << "error: impossible convertion" << std::endl;
 	}
 }
-void	Converter::convertToChar()
+void Converter::convertToChar()
 {
 	char c = this->_input[0];
 	std::cout << "char: '" << c << "'" << std::endl;
@@ -195,7 +195,7 @@ void	Converter::convertToChar()
 	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 }
-void	Converter::convertToInt()
+void Converter::convertToInt()
 {
 	const char *i_ptr = &this->_input[0];
 	int i_dec = atoi(i_ptr);
@@ -211,7 +211,7 @@ void	Converter::convertToInt()
 	std::cout << "float: " << static_cast<float>(i_dec) << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(i_dec) << std::endl;
 }
-void	Converter::convertToFloat()
+void Converter::convertToFloat()
 {
 	_errChar = false;
 	_errInt = false;
@@ -222,7 +222,7 @@ void	Converter::convertToFloat()
 
 	// CHECKING PART
 	char *end;
-	float f =  static_cast<float>(std::strtod(this->_input.c_str(), &end));
+	float f = static_cast<float>(std::strtod(this->_input.c_str(), &end));
 	if (errno == ERANGE)
 	{
 		_errInt = true;
@@ -230,10 +230,10 @@ void	Converter::convertToFloat()
 		_errChar = true;
 	}
 
-	// CHAR 
+	// CHAR
 	long intCheckL = static_cast<long>(f);
 	if (intCheckL > std::numeric_limits<char>::max() || intCheckL < std::numeric_limits<char>::min())
-	{	
+	{
 		_errChar = true;
 	}
 	else
@@ -241,7 +241,7 @@ void	Converter::convertToFloat()
 
 	// INT
 	if (intCheckL > std::numeric_limits<int>::max() || intCheckL < std::numeric_limits<int>::min())
-	{	
+	{
 		_errInt = true;
 	}
 	else
@@ -250,9 +250,9 @@ void	Converter::convertToFloat()
 	// PRINTING PART
 	std::cout << std::fixed << std::setprecision(1);
 	// CHAR
-	if ( _errChar == true)
+	if (_errChar == true)
 		std::cout << "char: impossible" << std::endl;
-	else if ( isprint(c) == false || isnumber(c) == true)
+	else if (isprint(c) == false || isnumber(c) == true)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
@@ -272,7 +272,7 @@ void	Converter::convertToFloat()
 	else
 		std::cout << "double: " << static_cast<double>(f) << std::endl;
 }
-void	Converter::convertToDouble()
+void Converter::convertToDouble()
 {
 	_errChar = false;
 	_errInt = false;
@@ -283,7 +283,7 @@ void	Converter::convertToDouble()
 
 	// CHECKING PART
 	char *end;
-	double d =  std::strtod(this->_input.c_str(), &end);
+	double d = std::strtod(this->_input.c_str(), &end);
 	if (errno == ERANGE)
 	{
 		_errChar = true;
@@ -292,7 +292,7 @@ void	Converter::convertToDouble()
 		_errDoube = true;
 	}
 
-	// CHAR 
+	// CHAR
 	long intCheckL = static_cast<long>(d);
 	if (intCheckL > std::numeric_limits<char>::max() || intCheckL < std::numeric_limits<char>::min())
 		_errChar = true;
@@ -308,9 +308,9 @@ void	Converter::convertToDouble()
 	// PRINTING PART
 	std::cout << std::fixed << std::setprecision(1);
 	// CHAR
-	if ( _errChar == true)
+	if (_errChar == true)
 		std::cout << "char: impossible" << std::endl;
-	else if ( isprint(c) == false || isnumber(c) == true)
+	else if (isprint(c) == false || isnumber(c) == true)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
@@ -330,7 +330,6 @@ void	Converter::convertToDouble()
 	else
 		std::cout << "double: " << this->_input << std::endl;
 }
-
 
 void Converter::printImpossible()
 {
