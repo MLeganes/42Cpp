@@ -56,5 +56,5 @@ public:
 
 	void	printImpossible();
 };
-
+std::ostream &operator<<(std::ostream &ost);
 #endif
