@@ -53,7 +53,14 @@ Try-Catch and Exceptions
 ## Cpp06
 C++ casting
 
--	ex00 Conversion of scalar types. Convert from a string to an int, a float or a double
--	ex01 Serialization
--	ex02 Identify real type
+-	ex00 Conversion of scalar types. Convert from a string to an int, a float or a double. Static_cast.
+-	ex01 Serialization. Reinterpreter_cast.
+-	ex02 Identify real type. Dynamic_cast.
+
+## Cpp07
+C++ templates
+
+-	ex00 Start with a few functions
+-	ex01 Iter
+-	ex02 Array
 

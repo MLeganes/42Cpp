@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:19:19 by amorcill          #+#    #+#             */
-/*   Updated: 2022/06/28 12:30:39 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:01:36 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,7 @@ void Converter::convertToDouble()
 	_errDoube = false;
 	char c;
 	int i;
+	float f;
 
 	// CHECKING PART
 	char *end;
@@ -305,6 +306,12 @@ void Converter::convertToDouble()
 	else
 		i = static_cast<int>(d);
 
+	// FLOAT
+	if ( d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		_errFloat = true;
+	else
+		f = static_cast<float>(d);
+
 	// PRINTING PART
 	std::cout << std::fixed << std::setprecision(1);
 	// CHAR
@@ -313,7 +320,7 @@ void Converter::convertToDouble()
 	else if (isprint(c) == false || isnumber(c) == true)
 		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
+		std::cout << "char: '" << c << "'" << std::endl;
 	// INT
 	if (_errInt == true)
 		std::cout << "int: impossible" << std::endl;
@@ -323,7 +330,7 @@ void Converter::convertToDouble()
 	if (_errFloat == true)
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+		std::cout << "float: " << f << "f" << std::endl;
 	// DOUBLE
 	if (_errFloat)
 		std::cout << "double: impossible" << std::endl;
