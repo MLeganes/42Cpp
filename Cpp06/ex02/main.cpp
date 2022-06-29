@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:20:38 by amorcill          #+#    #+#             */
-/*   Updated: 2022/06/28 15:58:01 by amorcill         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:59:58 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main()
 	Base *base;
 	size_t count = 10;
 
-	for (size_t i = 0; i < count; i++)
+	for (size_t i = 0;themes i < count; i++)
 	{
 		std::cout << std::endl
 				  << "Example casting " << i << std::endl;

@@ -60,7 +60,7 @@ C++ casting
 ## Cpp07
 C++ templates
 
--	ex00 Start with a few functions
--	ex01 Iter
--	ex02 Array
+-	ex00 Function templates
+-	ex01 Function templates: Iter
+-	ex02 Class templates: Array
 
