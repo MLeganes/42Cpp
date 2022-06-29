@@ -10,6 +10,7 @@
 template <typename T>
 Array<T>::Array()
 {
+	std::cout << "Array Default Constructor" << std::endl;
 	_size = 0;
 	_array = NULL;
 }
@@ -17,6 +18,7 @@ Array<T>::Array()
 template <typename T> 
 Array<T>::Array(unsigned int size)
 {
+	std::cout << "Array Size-Constructor" << std::endl;
 	_array = new T[size];
 	_size = size;
 }
@@ -25,6 +27,7 @@ Array<T>::Array(unsigned int size)
 template <typename T>
 Array<T>::Array(Array<T> const &copy)
 {
+	std::cout << "Array Copy Constructor" << std::endl;
 	this->_size = copy.size();
 	this->_array = new T[copy.size()];
 	for(unsigned int i = 0; i < this->_size; i++)
@@ -41,11 +44,12 @@ Array<T>::~Array()
 template <typename T>
 Array<T>	&Array<T>::operator=(Array<T> const &obj)
 {
+	std::cout << "Array operantor=" << std::endl;
 	if (this != &obj)
 	{
-		if (this->size > 0)
+		if (this->_size > 0)
 			delete [] this->_array;
-		this->size = obj._size;
+		this->_size = obj.size();
 		this->_array = new T[obj._size];
 		for(unsigned int i = 0; i < this->_size; i++)
 			this->_array[i] = obj._array[i];
