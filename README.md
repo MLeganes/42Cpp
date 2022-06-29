@@ -64,3 +64,9 @@ C++ templates
 -	ex01 Function templates: Iter
 -	ex02 Class templates: Array
 
+## Cpp08
+Templated containers, iterators, algorithms
+
+-	ex00
+-	ex01
+-	ex02
