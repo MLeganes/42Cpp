@@ -1,8 +1,14 @@
 #include <iostream>
 #include "iter.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
+	if (argc > 1)
+	{
+		std::cout << "error: No arguments needed" << std::endl;
+		(void) argv;
+		return 1;
+	}
 	size_t len = 10;
 	char arrChar[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
 	int arrInt[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

@@ -16,22 +16,24 @@ int main(int argc, char** argv)
 		return 1;
 	}
     Array<int> numbers(MAX_VAL); // Stack memory
-	
-
-    int* mirror = new int[MAX_VAL]; // Heap memory
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
+	int* mirror = new int[MAX_VAL]; // Heap memory
+    
+	//srand(time(NULL));
+    // Print the 
+	for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
-		// std::cout << i << " Rand for: " << value << std::endl;
         numbers[i] = value;
         mirror[i] = value;
+		//std::cout << i << " Random for numbers: " << numbers[i] << " mirror: " << mirror[i] << std::endl;
     }
+
+
     //SCOPE
     {
 		// 1). Example Constructor
-		//Array<int> tmp1;	// Array Default Constructor.
-		//tmp1 = numbers;		// operator=
+		Array<int> tmp1;	// Array Default Constructor.
+		tmp1 = numbers;		// operator=
 
 		// 2). Example Constructor: Array COPY construtor
 		//Array<int> tmp2 = numbers; // Array COPY construtor 
@@ -40,26 +42,26 @@ int main(int argc, char** argv)
 		//Array<int> tmp3(numbers); 
 
 		// 4). Example Constructor: Array COPY construtor
-		//Array<int> test(tmp1);
+		Array<int> test(tmp1);
 
-		// for(int i = 0; i < tmp1.size(); i++)
-		// {
-		// 	std::cout << " Tmp " << i << "" << tmp1[i] << std::endl;
-		// }
+		for(unsigned int i = 0; i < tmp1.size(); i++)
+		{
+			if (tmp1[i] != test[i])
+				std::cerr << "didn't save the same value!!" << std::endl;
+		}
+	}
+
+	for (int i = 0; i < MAX_VAL; i++)
+	{
+		if (mirror[i] != numbers[i])
+		{
+			std::cerr << "didn't save the same value!!" << std::endl;
+			return 1;
+		}
 	}
 
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-
-
-	// # 1). Example Throw Exception
+	// # 1). Example Throw Exception: error: Array: Index is out of bounds
     // try
     // {
     //    numbers[-2] = 0;
@@ -69,7 +71,7 @@ int main(int argc, char** argv)
     //     std::cerr << e.what() << '\n';
     // }
     
-	// # 2). Example Throw Exception
+	// # 2). Example Throw Exception: error: Array: Index is out of bounds
 	// try
     // {
     //     numbers[MAX_VAL] = 0;

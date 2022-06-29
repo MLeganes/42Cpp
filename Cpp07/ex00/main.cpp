@@ -1,8 +1,14 @@
 #include <iostream>
-#include "Whatever.hpp"
+#include "whatever.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
+	if (argc > 1)
+	{
+		std::cout << "error: No arguments needed" << std::endl;
+		(void) argv;
+		return 1;
+	}
 	int a = 2;
 	int b = 3;
 	::swap( a, b );
