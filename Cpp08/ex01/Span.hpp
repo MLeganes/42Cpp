@@ -3,17 +3,17 @@
 
 // #include <iostream>
 #include <algorithm>
-
 #include <vector>
 #include <stdexcept>
+#include <iostream>
 
 //class Span : public std::vector<int>
 class Span 
 {
 private:
-	std::vector<int>	*_ivector;
+	std::vector<int>	_ivector;
 	unsigned int		_size;
-	unsigned int		_idx;
+	// unsigned int		_idx;
 	static int 			randomNumber();
 public:
 	Span();
@@ -23,13 +23,13 @@ public:
 
 	Span &operator=(const Span &obj);
 
-	std::vector<int>::iterator 	begin() const;
-	std::vector<int>::iterator 	end() const;
+	std::vector<int>::iterator 	begin();
+	std::vector<int>::iterator 	end();
 	void						addNumber(int nbr);
-	int 						shortestSpan() const;
-	int 						longestSpan() const;
+	int 						shortestSpan();
+	int 						longestSpan();
 	void 						fillRandom();
-
+	void						printVector();
 };
 
 #endif
