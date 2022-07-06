@@ -8,13 +8,15 @@
 #include <map>
 #include <list>
 
+#define MAX_NBR 100
+
 static int randomNumber();
 static void printNumber(int &nbr);
 
 int main()
 {
-	std::vector<int> 	ivector(100);
-	std::list<int>		ilist(100);
+	std::vector<int> 	ivector(MAX_NBR);
+	std::list<int>		ilist(MAX_NBR);
 
 	std::generate(ivector.begin(), ivector.end(), randomNumber);
 	std::generate(ilist.begin(), ilist.end(), randomNumber);
@@ -60,7 +62,6 @@ int main()
 	for_each(ilist.begin(), ilist.end(), printNumber);
 		std::cout << std::endl;
 
-
 // #4.
 	try
 	{
@@ -72,7 +73,7 @@ int main()
 		std::cerr << e.what() << '\n';
 	}
 
-// #2.
+// #5.
 	ilist.push_back(42);
 	try
 	{
@@ -84,7 +85,7 @@ int main()
 		std::cerr << e.what() << '\n';
 	}
 
-// #3.
+// #6.
 	try
 	{
 		std::list<int>::iterator iter = easyfind(ilist, 4242);
@@ -101,7 +102,7 @@ int main()
 
 static int randomNumber()
 {
-	return (random() % 100);
+	return (random() % MAX_NBR);
 }
 
 static void printNumber(int &nbr)

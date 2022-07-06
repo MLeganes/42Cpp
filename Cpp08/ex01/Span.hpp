@@ -26,8 +26,8 @@ public:
 	std::vector<int>::iterator 	begin() const;
 	std::vector<int>::iterator 	end() const;
 	void						addNumber(int nbr);
-	int 						shortestSpand() const;
-	int 						longestSpand() const;
+	int 						shortestSpan() const;
+	int 						longestSpan() const;
 	void 						fillRandom();
 
 };

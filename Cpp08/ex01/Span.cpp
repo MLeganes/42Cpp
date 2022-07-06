@@ -54,14 +54,41 @@
 		this->_size = this->_ivector->size();
 	}
 
-	int 						Span::shortestSpand() const
+	int 						Span::shortestSpan() const
 	{
-		return 11111;
+		unsigned int span = -1;
+
+		if (this->_ivector->size() < 2)
+			throw std::logic_error("error:span: No elements in span");
+		std::vector<int>::iterator iter;
+		std::vector<int>::iterator begin = this->begin();
+		std::vector<int>::iterator end = this->end();
+		std::sort(this->begin(), this->end());
+		//std::for_each(this->begin(), this->end(), Span::checkSpan);
+		 iter = begin;
+		++begin;
+		for(; iter != end; ++iter)
+		{
+			if ((*iter - *begin) < span)
+				span = *iter - *begin;
+			++begin;
+		}
+		return span;
 	}
 
-	int 						Span::longestSpand() const
+	int 						Span::longestSpan() const
 	{
-		return 222222;
+		int min;
+		int max;
+
+		if (this->_ivector->size() < 2)
+			throw std::logic_error("error:span: No elements in span");
+		else
+		{
+			min = *std::min_element(this->begin(), this->end());
+			max = *std::max_element(this->begin(), this->end());
+		}
+		return(static_cast<int>(max - min));
 	}
 
 	void 						Span::fillRandom()
