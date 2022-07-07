@@ -67,6 +67,6 @@ C++ templates
 ## Cpp08
 Templated containers, iterators, algorithms
 
--	ex00
--	ex01
--	ex02
+-	ex00 Template. easyfind.
+-	ex01 Span
+-	ex02 Stack
