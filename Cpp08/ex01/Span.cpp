@@ -56,29 +56,39 @@ void						Span::addNumber(int nbr)
 
 int 						Span::shortestSpan()
 {
-	int span = -1;
-
 	if (this->_ivector.size() < 2)
 		throw std::logic_error("error:span: No elements to get shortest span");
-	std::vector<int>::iterator iter;
-	std::vector<int>::iterator begin = this->begin();
-	std::vector<int>::iterator end = this->end();
 	
-	std::sort(this->_ivector.begin(), this->_ivector.end());
-	//std::for_each(this->begin(), this->end(), Span::checkSpan);
-	iter = this->begin();
-	span = *iter - *begin;
-	++begin;
-
-	for(; iter != end; ++iter)
+		// 2147483647,	-2147483648
+	long shortspan = 2147483647; // std::numeric_limits<int>::max();
+	std::vector<int> tmp_ivec(this->_ivector);
+	std::sort(tmp_ivec.begin(), tmp_ivec.end());
+	for (unsigned long i = 0; i < tmp_ivec.size(); i++)
 	{
-		std::cout << "iter " << *iter << " begin " << *begin << std::endl;
-		if ((*iter - *begin) < span)
-			span = *iter - *begin;
-		++begin;
+		if (i + 1 < tmp_ivec.size())
+		{
+			if (tmp_ivec[i + 1] - tmp_ivec[i] < shortspan)
+				shortspan = tmp_ivec[i + 1] - tmp_ivec[i];
+		}
 	}
-	std::cout << "Return shortes span: " << span << std::endl;
-	return span;
+	// std::vector<int>::iterator iter;
+	// std::vector<int>::iterator begin = this->begin();
+	// std::vector<int>::iterator end = this->end();
+	
+	// //std::for_each(this->begin(), this->end(), Span::checkSpan);
+	// iter = this->begin();
+	// span = *iter - *begin;
+	// ++begin;
+
+	// for(; iter != end; ++iter)
+	// {
+	// 	std::cout << "iter " << *iter << " begin " << *begin << std::endl;
+	// 	if ((*iter - *begin) < span)
+	// 		span = *iter - *begin;
+	// 	++begin;
+	// }
+	// std::cout << "Return shortes span: " << span << std::endl;
+	return shortspan;
 }
 
 int 						Span::longestSpan()
@@ -100,7 +110,7 @@ int 						Span::longestSpan()
 
 void 						Span::fillRandom()
 {
-	std::generate(this->_ivector.begin(), this->_ivector.end(), Span::randomNumber);
+	std::generate(this->_ivector.begin(), this->_ivector.end(), randomNumber);
 }
 
 int Span::randomNumber()

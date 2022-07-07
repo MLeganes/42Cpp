@@ -18,13 +18,29 @@ int main()
 	//sp.printVector();
 
 		std::cout << "Shortes span: " << sp.shortestSpan() << std::endl;
-		//std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+
+
+	Span spLong = Span(10000);
+	spLong.fillRandom();
+	spLong.printVector();
+
+	try
+	{
+
+		std::cout << "Shortes span: " << spLong.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << spLong.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return 0;
 }
 
