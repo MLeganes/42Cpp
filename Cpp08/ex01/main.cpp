@@ -1,46 +1,35 @@
 #include "Span.hpp"
 #include <iostream>
 
-
-
 int main()
 {
 	Span sp = Span(5);
 	try
 	{
-	
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
 
-	//sp.printVector();
-
-		std::cout << "Shortes span: " << sp.shortestSpan() << std::endl;
-		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-
-	Span spLong = Span(10000);
-	spLong.fillRandom();
-	spLong.printVector();
-
+	Span splong = Span(10000);
 	try
 	{
-
-		std::cout << "Shortes span: " << spLong.shortestSpan() << std::endl;
-		std::cout << "Longest span: " << spLong.longestSpan() << std::endl;
+		splong.fillRandom();
+		std::cout << splong.shortestSpan() << std::endl;
+		std::cout << splong.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
 	return 0;
 }
-
